@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="container mx-auto max-w-2xl">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">
+                Todo App Demo
+            </h1>
+            
+            <div class="mb-4">
+                <input 
+                    type="text" 
+                    id="todoInput" 
+                    placeholder="Add a new todo..." 
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
+<button 
+                 onclick="addTodo()" 
+                 class="mt-2 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+             >
+Add Todo
+</button>
+</div>
+<ul id="todoList" class="space-y-2"></ul>
+    </div>
+</div>
+
+<script>
+    let todos = [];
+    
+    function addTodo() {
+        const input = document.getElementById('todoInput');
+        const text = input.value.trim();
+        
+        if (text) {
+            todos.push({ id: Date.now(), text, completed: false });
+            input.value = '';
+            renderTodos();
+        }
+    }
+    
+    function toggleTodo(id) {
+        todos = todos.map(todo => 
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        );
+        renderTodos();
+    }
+    
+    function deleteTodo(id) {
+        todos = todos.filter(todo => todo.id !== id);
+        renderTodos();
+    }
+    
+    function renderTodos() {
+        const list = document.getElementById('todoList');
+        list.innerHTML = todos.map(todo => `
+            <li class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <input 
+                    type="checkbox" 
+                    ${todo.completed ? 'checked' : ''} 
+                    onchange="toggleTodo(${todo.id})"
+                    class="w-5 h-5"
+                />
+                <span class="${todo.completed ? 'line-through text-gray-400' : 'text-gray-800'} flex-1">
+                    ${todo.text}
+                </span>
+                <button 
+                    onclick="deleteTodo(${todo.id})" 
+                    class="text-red-600 hover:text-red-800"
+                >
+                    Delete
+                </button>
+            </li>
+        `).join('');
+    }
+</script>
+</body>
+</html>
