@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Todo App - Production Ready</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div id="app" class="min-h-screen py-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <header class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">
+                        <i class="fas fa-tasks text-blue-600"></i> Advanced Todo App
+                    </h1>
+                    <div class="flex gap-2">
+                        <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:inline"></i>
+                        </button>
+                        <button onclick="exportData()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Add Todo Section -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+                <form onsubmit="addTodo(event)" class="space-y-4">
+                    <div>
+                        <input 
+                            type="text" 
+                            id="todoInput" 
+                            placeholder="What needs to be done?" 
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                        />
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <select id="todoCategory" class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                        </select>
+                        
+                        <select id="todoPriority" class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                            <option value="low">Low Priority</option>
+                            <option value="medium">Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                        
+                        <input 
+                            type="date" 
+                            id="todoDueDate" 
+                            class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                        />
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-semibold transition-colors"
+                    >
+                        <i class="fas fa-plus"></i> Add Todo
+                    </button>
+                </form>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
+                <div class="flex flex-wrap gap-4 items-center">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search todos..." 
+                        onkeyup="filterTodos()"
+                        class="flex-1 min-w-[200px] px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                    />
+                    
+                    <select id="filterCategory" onchange="filterTodos()" class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                        <option value="all">All Categories</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                    </select>
+                    
+                    <select id="filterStatus" onchange="filterTodos()" class="px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Total Tasks</div>
+                    <div class="text-2xl font-bold text-gray-800 dark:text-white" id="statTotal">0</div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Active</div>
+                    <div class="text-2xl font-bold text-blue-600" id="statActive">0</div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Completed</div>
+                    <div class="text-2xl font-bold text-green-600" id="statCompleted">0</div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Completion Rate</div>
+                    <div class="text-2xl font-bold text-purple-600" id="statRate">0%</div>
+                </div>
+            </div>
+
+            <!-- Todo List -->
+            <div id="todoList" class="space-y-3"></div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-12">
+                <i class="fas fa-clipboard-list text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+                <p class="text-xl text-gray-500 dark:text-gray-400">No todos yet. Add one above!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
