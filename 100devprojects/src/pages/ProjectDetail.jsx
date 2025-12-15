@@ -1,10 +1,22 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { projects } from '../data/projects';
+import { getProjectBySlug } from '../data/projects.js';
+import { useSEO } from '../hooks/useSEO';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const project = projects.find(p => p.slug === slug);
+  const project = getProjectBySlug(slug);
+  
+  // Use SEO Hook
+  useSEO({
+    title: project?.meta?.title || '100 Dev Projects',
+    description: project?.meta?.description || 'Learn web development',
+    keywords: project?.meta?.keywords?.join(', ') || '',
+    ogImage: project?.meta?.ogImage 
+      ? `https://100devprojects.in${project.meta.ogImage}` 
+      : 'https://100devprojects.in/og-default.jpg',
+    canonicalUrl: project?.meta?.canonicalUrl || 'https://100devprojects.in'
+  });
 
   if (!project) {
     return (
@@ -28,8 +40,8 @@ const ProjectDetail = () => {
         </div>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Header */}
-          <div className="bg-linear-to-r from-blue-600 to-purple-600 p-8 text-white">
+          {/* Header - FIXED: bg-gradient-to-r (not bg-linear-to-r) */}
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
             <div className="flex items-center gap-3 mb-4">
               <span className="px-4 py-1 bg-white/20 rounded-full text-sm font-medium">
                 {project.category}
@@ -45,17 +57,17 @@ const ProjectDetail = () => {
           {/* Content */}
           <div className="p-8">
             {/* Action Buttons */}
-            <div className="flex gap-4 mb-8">
-              
-               <a href={project.demoUrl}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <a 
+                href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-center font-medium"
               >
                 🚀 View Live Demo
               </a>
-              
-               <a href={project.githubUrl}
+              <a 
+                href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-900 transition-colors text-center font-medium"

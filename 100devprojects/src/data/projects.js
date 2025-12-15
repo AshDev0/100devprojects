@@ -1,91 +1,344 @@
+// ============================================
+// PROJECTS DATA - 100 DEV PROJECTS
+// ============================================
+
 export const projects = [
+  // ============================================
+  // PROJECT 1: BMI CALCULATOR
+  // ============================================
   {
     id: 1,
-    title: "E-commerce Dashboard",
-    slug: "ecommerce-dashboard",
-    category: "React",
-    difficulty: "Intermediate",
-    description: "A complete admin dashboard with real-time data visualization, user management, and inventory tracking. Perfect for learning state management and API integration.",
-    features: [
-      "Real-time data visualization with charts",
-      "User management system with CRUD operations",
-      "Product inventory tracking and management",
-      "Responsive design for all devices"
-    ],
-    techStack: ["React", "Tailwind CSS", "Chart.js", "Context API"],
-    demoUrl: "/demos/ecommerce-dashboard/index.html",
-    githubUrl: "https://github.com/yourusername/demo-ecommerce-dashboard",
-    thumbnail: "/images/projects/ecommerce-dashboard.jpg",
-    learningOutcomes: [
-      "Advanced React patterns and hooks",
-      "State management with Context API",
-      "Data visualization techniques",
-      "Responsive dashboard layouts"
-    ],
-    dateAdded: "2024-12-01",
-    tags: ["dashboard", "admin", "charts", "ecommerce"]
-  },
-  {
-    id: 2,
-    title: "Todo App with Authentication",
-    slug: "todo-app-auth",
-    category: "Full Stack",
-    difficulty: "Beginner",
-    description: "A feature-rich todo application with user authentication, local storage, and drag-and-drop functionality.",
-    features: [
-      "User authentication and authorization",
-      "Add, edit, delete todos",
-      "Drag and drop to reorder",
-      "Filter by status (all, active, completed)"
-    ],
-    techStack: ["React", "Tailwind CSS", "Firebase Auth", "LocalStorage"],
-    demoUrl: "/demos/todo-app/index.html",
-    githubUrl: "https://github.com/yourusername/demo-todo-app",
-    thumbnail: "/images/projects/todo-app.jpg",
-    learningOutcomes: [
-      "React hooks (useState, useEffect, useContext)",
-      "Firebase authentication integration",
-      "Local storage management",
-      "Form handling and validation"
-    ],
-    dateAdded: "2024-12-05",
-    tags: ["todo", "authentication", "firebase", "crud"]
-  },
-  {
-    id: 3,
-    title: "Weather App with API",
-    slug: "weather-app",
+    title: "BMI Calculator (Body Mass Index)",
+    slug: "bmi-calculator",
+    shortTitle: "BMI Calculator",
     category: "JavaScript",
     difficulty: "Beginner",
-    description: "A beautiful weather application that fetches real-time weather data from OpenWeather API with location search.",
+
+    meta: {
+      title: "BMI Calculator JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a responsive BMI Calculator using Vanilla JavaScript. Learn form validation, DOM manipulation, BMI logic, and localStorage with a real-world health project.",
+      keywords: [
+        "BMI calculator JavaScript",
+        "body mass index calculator",
+        "JavaScript beginner project",
+        "DOM manipulation project",
+        "localStorage JavaScript",
+        "health calculator JS"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/bmi-calculator/index.html"
+    },
+
+    description:
+      "A responsive BMI Calculator built using Vanilla JavaScript that calculates BMI, shows health categories, and stores previous results using localStorage.",
+
+    longDescription: `
+This BMI Calculator is a beginner-friendly JavaScript project focused on solving
+a real-world health problem.
+
+Users can calculate BMI using height and weight, view health categories,
+and see previous calculations stored in localStorage.
+
+The project is built using clean HTML, modern CSS, and well-structured JavaScript,
+making it perfect for a beginner portfolio.
+    `,
+
     features: [
-      "Real-time weather data",
-      "5-day forecast",
-      "Location-based search",
-      "Animated weather icons"
+      "Height and weight input validation",
+      "Accurate BMI calculation",
+      "Health category detection",
+      "Color-coded results UI",
+      "Calculation history using localStorage",
+      "Delete individual history records",
+      "Responsive design"
     ],
-    techStack: ["React", "Tailwind CSS", "OpenWeather API", "Axios"],
-    demoUrl: "/demos/weather-app/index.html",
-    githubUrl: "https://github.com/yourusername/demo-weather-app",
-    thumbnail: "/images/projects/weather-app.jpg",
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript",
+      "LocalStorage API"
+    ],
+
     learningOutcomes: [
-      "API integration and data fetching",
-      "Async/await and promises",
-      "Error handling",
+      "DOM manipulation",
+      "Form validation",
+      "Event handling",
+      "Working with localStorage",
+      "Conditional logic",
+      "Responsive UI development"
+    ],
+
+    demoUrl: "/demos/bmi-calculator/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/bmi-calculator",
+
+    thumbnail: "/images/projects/bmi-calculator.jpg",
+
+    dateAdded: "2024-12-15",
+    estimatedTime: "2–3 hours",
+    tags: ["bmi", "calculator", "health", "javascript", "beginner"],
+    status: "active",
+    featured: true,
+    trending: false
+  },
+
+  // ============================================
+  // PROJECT 2: TIP CALCULATOR
+  // ============================================
+  {
+    id: 2,
+    title: "Tip Calculator using JavaScript",
+    slug: "tip-calculator",
+    shortTitle: "Tip Calculator",
+    category: "JavaScript",
+    difficulty: "Beginner",
+
+    meta: {
+      title: "Tip Calculator JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a simple Tip Calculator using Vanilla JavaScript. Learn DOM manipulation, event handling, and basic calculations.",
+      keywords: [
+        "tip calculator javascript",
+        "javascript beginner project",
+        "dom manipulation project",
+        "bill calculator js"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/tip-calculator/index.html"
+    },
+
+    description:
+      "A simple Tip Calculator built with Vanilla JavaScript that calculates the total bill amount based on the entered tip percentage.",
+
+    longDescription: `
+This Tip Calculator is a very beginner-friendly JavaScript project.
+
+Users enter the bill amount and tip percentage, and the total amount
+is calculated on button click.
+
+The project focuses on understanding input handling,
+basic calculations, and updating the DOM dynamically.
+    `,
+
+    features: [
+      "Bill amount input",
+      "Tip percentage input",
+      "Button-based calculation",
+      "Dynamic total update",
+      "Simple and clean logic"
+    ],
+
+    techStack: [
+      "HTML5",
+      "Vanilla JavaScript"
+    ],
+
+    learningOutcomes: [
+      "Selecting DOM elements",
+      "Handling click events",
+      "Reading input values",
+      "Performing calculations",
+      "Updating UI with JavaScript"
+    ],
+
+    demoUrl: "/demos/tip-calculator/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/tip-calculator",
+
+    thumbnail: "/images/projects/tip-calculator.jpg",
+
+    dateAdded: "2024-12-15",
+    estimatedTime: "30–45 minutes",
+    tags: ["tip", "calculator", "javascript", "beginner"],
+    status: "active",
+    featured: false,
+    trending: false
+  },
+
+  // ============================================
+  // PROJECT 3: TODO APP (BASIC)
+  // ============================================
+  {
+    id: 3,
+    title: "Todo App using Vanilla JavaScript",
+    slug: "todo-app",
+    shortTitle: "Todo App",
+    category: "JavaScript",
+    difficulty: "Beginner",
+
+    meta: {
+      title: "Todo App JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a basic Todo App using Vanilla JavaScript and Tailwind CSS. Learn DOM manipulation and array-based state management.",
+      keywords: [
+        "todo app javascript",
+        "vanilla javascript todo app",
+        "beginner javascript project",
+        "tailwind css todo app"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/todo-app-basic/index.html"
+    },
+
+    description:
+      "A basic Todo App that allows users to add, complete, and delete tasks using Vanilla JavaScript.",
+
+    longDescription: `
+This Basic Todo App helps beginners understand how to manage
+application state using arrays and render UI dynamically.
+
+Users can add todos, mark them as completed,
+and delete tasks with a clean Tailwind CSS interface.
+    `,
+
+    features: [
+      "Add todo items",
+      "Mark todos as completed",
+      "Delete todos",
+      "Dynamic rendering",
+      "Clean UI with Tailwind CSS"
+    ],
+
+    techStack: [
+      "HTML5",
+      "Vanilla JavaScript",
+      "Tailwind CSS (CDN)"
+    ],
+
+    learningOutcomes: [
+      "DOM manipulation",
+      "Array-based state management",
+      "Template literals",
+      "Handling user events",
       "Conditional rendering"
     ],
-    dateAdded: "2024-12-08",
-    tags: ["api", "weather", "axios", "geolocation"]
+
+    demoUrl: "/demos/todo-app/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/todo-app",
+
+    thumbnail: "/images/projects/todo-app-basic.jpg",
+
+    dateAdded: "2024-12-15",
+    estimatedTime: "1–2 hours",
+    tags: ["todo", "javascript", "beginner", "tailwind"],
+    status: "active",
+    featured: false,
+    trending: false
+  },
+
+  // ============================================
+  // PROJECT 4: TODO APP (ADVANCED)
+  // ============================================
+  {
+    id: 4,
+    title: "Advanced Todo App with LocalStorage",
+    slug: "todo-app-advanced",
+    shortTitle: "Advanced Todo App",
+    category: "JavaScript",
+    difficulty: "Intermediate",
+
+    meta: {
+      title: "Advanced Todo App JavaScript | 100 Dev Projects",
+      description:
+        "Build an advanced Todo App using Vanilla JavaScript with filters, categories, priorities, dark mode, statistics, and localStorage.",
+      keywords: [
+        "advanced todo app javascript",
+        "todo app localstorage",
+        "intermediate javascript project",
+        "dark mode javascript"
+      ],
+      canonicalUrl:
+        "https://100devprojects.in/demos/todo-app-advanced/index.html"
+    },
+
+    description:
+      "An advanced Todo App featuring categories, priorities, filters, statistics, dark mode, and persistent storage.",
+
+    longDescription: `
+This Advanced Todo App demonstrates intermediate-level JavaScript skills
+without using any frameworks.
+
+The app includes localStorage persistence, filters, search,
+dark mode, statistics, and data export functionality,
+making it a strong portfolio project.
+    `,
+
+    features: [
+      "Add, edit, delete todos",
+      "Categories and priorities",
+      "Due dates with overdue detection",
+      "Search and filters",
+      "LocalStorage persistence",
+      "Dark mode with saved preference",
+      "Task statistics",
+      "Export todos as JSON"
+    ],
+
+    techStack: [
+      "HTML5",
+      "Vanilla JavaScript (ES6+)",
+      "Tailwind CSS (CDN)",
+      "LocalStorage API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Class-based JavaScript architecture",
+      "State management without frameworks",
+      "Advanced filtering logic",
+      "Dark mode implementation",
+      "Working with dates",
+      "Building scalable JS projects"
+    ],
+
+    demoUrl: "/demos/todo-app-advanced/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/todo-app-advanced",
+
+    thumbnail: "/images/projects/advanced-todo-app.jpg",
+
+    dateAdded: "2024-12-15",
+    estimatedTime: "6–8 hours",
+    tags: [
+      "todo",
+      "javascript",
+      "intermediate",
+      "localstorage",
+      "dark-mode",
+      "portfolio"
+    ],
+    status: "active",
+    featured: true,
+    trending: true
   }
 ];
 
-export const categories = [
-  "All",
-  "React",
-  "JavaScript",
-  "Full Stack",
-  "API Integration",
-  "CSS"
-];
+// ============================================
+// FILTER HELPERS
+// ============================================
 
-export const difficultyLevels = ["All", "Beginner", "Intermediate", "Advanced"];
+export const categories = ["All", "JavaScript"];
+export const difficultyLevels = ["All", "Beginner", "Intermediate"];
+
+export function getProjectBySlug(slug) {
+  return projects.find(project => project.slug === slug);
+}
+
+export function getProjectsByCategory(category) {
+  if (category === "All") return projects;
+  return projects.filter(project => project.category === category);
+}
+
+export function getProjectsByDifficulty(level) {
+  if (level === "All") return projects;
+  return projects.filter(project => project.difficulty === level);
+}
+
+export function searchProjects(query) {
+  const q = query.toLowerCase();
+  return projects.filter(project =>
+    project.title.toLowerCase().includes(q) ||
+    project.description.toLowerCase().includes(q) ||
+    project.tags.some(tag => tag.toLowerCase().includes(q))
+  );
+}

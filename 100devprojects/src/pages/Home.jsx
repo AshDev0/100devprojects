@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { projects, categories, difficultyLevels } from '../data/projects';
+import { useSEO } from '../hooks/useSEO';
 
 const Home = () => {
+  useSEO({
+    title: '100 Dev Projects | Learn Web Development by Building Real Projects',
+    description: 'Master JavaScript, React, and web development by building 100+ real-world projects. Step-by-step tutorials with production-ready code.',
+    keywords: 'web development projects, JavaScript projects, React projects, learn coding, developer portfolio, programming tutorials',
+    ogImage: 'https://100devprojects.in/og-default.jpg',
+    canonicalUrl: 'https://100devprojects.in'
+  });
+
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,7 +35,7 @@ const Home = () => {
           <p className="text-xl mb-8 text-blue-100">
             Learn by building real-world projects. From beginner to advanced.
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href="#projects" 
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
@@ -34,7 +43,9 @@ const Home = () => {
               Explore Projects
             </a>
             <a 
-              href="https://github.com/yourusername/100devprojects" 
+              href="https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
             >
               View on GitHub

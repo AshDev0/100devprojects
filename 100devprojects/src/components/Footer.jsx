@@ -27,12 +27,12 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Connect</h3>
             <ul className="space-y-2">
               <li>
-                <a href="https://github.com/yourusername" className="text-gray-400 hover:text-white">
+                <a href="https://github.com/AshDev0/100devprojects/tree/main/100devprojects" className="text-gray-400 hover:text-white">
                   GitHub
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/yourusername" className="text-gray-400 hover:text-white">
+                <a href="#" className="text-gray-400 hover:text-white">
                   Twitter
                 </a>
               </li>
