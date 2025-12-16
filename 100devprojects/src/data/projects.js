@@ -310,7 +310,99 @@ making it a strong portfolio project.
     status: "active",
     featured: true,
     trending: true
-  }
+  },
+   // ============================================
+  // PROJECT 5: Digital Clock, Stopwatch & Timer App
+  // ============================================
+  {
+  id: 5,
+  title: "Digital Clock, Stopwatch & Timer App",
+  slug: "digital-clock",
+  shortTitle: "Digital Clock",
+  category: "JavaScript",
+  difficulty: "Beginner",
+
+  meta: {
+    title: "Digital Clock, Stopwatch & Timer using JavaScript | 100 Dev Projects",
+    description:
+      "Build a Digital Clock with Stopwatch and Countdown Timer using Vanilla JavaScript. Includes dark mode, keyboard shortcuts, timer alerts, and responsive UI.",
+    keywords: [
+      "digital clock javascript",
+      "stopwatch javascript",
+      "countdown timer javascript",
+      "javascript beginner project",
+      "clock app javascript",
+      "vanilla javascript project"
+    ],
+    canonicalUrl:
+      "https://100devprojects.in/demos/digital-clock/index.html"
+  },
+
+  description:
+    "A multi-feature Digital Clock application built with Vanilla JavaScript that includes a real-time clock, stopwatch with lap tracking, and a countdown timer with alerts.",
+
+  longDescription: `
+This Digital Clock project is a complete beginner-to-intermediate level JavaScript application
+that combines three time-based utilities into a single interface.
+
+Users can view the current time with date and timezone, switch between 12 and 24 hour formats,
+use a stopwatch with lap recording, and run a countdown timer with visual progress and alerts.
+
+The app also supports dark mode with saved preferences, keyboard shortcuts,
+and a fully responsive UI — making it a strong portfolio-ready JavaScript project.
+  `,
+
+  features: [
+    "Real-time digital clock with date & timezone",
+    "12 / 24 hour format toggle",
+    "Stopwatch with lap recording",
+    "Countdown timer with progress ring",
+    "Timer sound alert & browser notification",
+    "Dark mode with saved preference",
+    "Keyboard shortcuts support",
+    "Tab-based UI navigation",
+    "Responsive design"
+  ],
+
+  techStack: [
+    "HTML5",
+    "CSS3",
+    "Vanilla JavaScript (ES6+)",
+    "LocalStorage API",
+    "Font Awesome Icons"
+  ],
+
+  learningOutcomes: [
+    "Working with Date and Time in JavaScript",
+    "setInterval & time-based logic",
+    "State management without frameworks",
+    "DOM manipulation & event handling",
+    "LocalStorage usage",
+    "Keyboard event handling",
+    "Building multi-feature JS apps"
+  ],
+
+  demoUrl: "/demos/digital-clock/index.html",
+  githubUrl:
+    "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/digital-clock",
+
+  thumbnail: "/images/projects/digital-clock.jpg",
+
+  dateAdded: "2024-12-15",
+  estimatedTime: "4–5 hours",
+  tags: [
+    "digital-clock",
+    "stopwatch",
+    "timer",
+    "javascript",
+    "beginner",
+    "portfolio-project"
+  ],
+
+  status: "active",
+  featured: true,
+  trending: true
+}
 ];
 
 // ============================================

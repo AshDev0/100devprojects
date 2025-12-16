@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock using JavaScript</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>
+        <h1>⏰ Digital Clock</h1>
+        <div class="header-controls">
+          <button id="darkModeToggle" class="icon-btn" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button
+            id="format-toggle"
+            class="icon-btn"
+            title="Toggle 12/24 Hour Format"
+          >
+            <span id="format-text">24H</span>
+          </button>
+        </div>
+      </header>
+
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="clock">
+          <i class="fas fa-clock"></i> Clock
+        </button>
+        <button class="tab-btn" data-tab="stopwatch">
+          <i class="fas fa-stopwatch"></i> Stopwatch
+        </button>
+        <button class="tab-btn" data-tab="timer">
+          <i class="fas fa-hourglass-half"></i> Timer
+        </button>
+      </nav>
+      <!-- Main Content Card  -->
+      <div class="card">
+        <!-- ====================CLOCK MODE====================  -->
+        <div id="clock-mode" class="mode-content active">
+            <div class="date-display" id="date-display">
+                <!-- Date will be inserted here -->
+            </div>
+            <div class="time-display" id="time-display">
+                <span id="hours">00</span>
+                <span class="separator">:</span>
+                <span id="minutes">00</span>
+                <span class="separator">:</span>
+                <span id="seconds">00</span>
+                <span id="ampm" class="ampm">AM</span>
+            </div>
+            <div class="timezone-info" id="timezone-info">
+                <!-- Timezone info will be inserted here -->
+            </div>
+        </div>
+        <!-- ====================STOPWATCH MODE====================  -->
+        <div id="stopwatch-mode" class="mode-content">
+            <div class="stopwatch-display">
+                <div class="time-large">
+                    <span id="sw-minutes">00</span>
+                    <span class="separator">:</span>
+                    <span id="sw-seconds">00</span>
+                    <span class="separator">:</span>
+                    <span id="sw-milliseconds" class="milliseconds">00</span>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="sw-start" class="btn btn-success">
+                    <i class="fas fa-play"></i> Start
+                </button>
+                <button id="sw-stop" class="btn btn-danger" disabled>
+                    <i class="fas fa-pause"></i> Stop
+                </button>
+                <button id="sw-lap" class="btn btn-primary" disabled>
+                    <i class="fas fa-flag"></i> Lap
+                </button>
+                <button id="sw-reset" class="btn btn-secondary">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+
+            <div class="laps-container">
+                <h3 class="laps-title">Lap Times</h3>
+                <div id="laps-list" class="laps-list">
+                    <p class="empty-message">No laps recorded yet</p>
+                </div>
+            </div>
+        </div>
+        <!-- ====================TIMER MODE====================  -->
+        <div id="timer-mode" class="mode-content">
+            <!-- Timer Input -->
+             <div class="timer-input" id="timer-input">
+                <div class="input-group">
+                    <label for="">Hours</label>
+                    <input type="number" id="timer-hours" min="0" max="23" value="0" />
+                </div>
+                <div class="input-group">
+                    <label for="">Minutes</label>
+                    <input type="number" id="timer-minutes" min="0" max="59" value="0" />
+                </div>
+                <div class="input-group">
+                    <label for="">Seconds</label>
+                    <input type="number" id="timer-seconds" min="0" max="59" value="0" />
+                </div>
+             </div>
+
+             <!-- Timer Display  -->
+              <div class="timer-display" id="timer-display">
+                <div class="time-large">
+                    <span id="t-hours">00</span>
+                    <span class="separator">:</span>
+                    <span id="t-minutes">00</span>
+                    <span class="separator">:</span>
+                    <span id="t-seconds">00</span>
+                </div>
+                <!-- Progress Circle -->
+
+                <div class="progress-ring">
+                        <svg width="200" height="200">
+                            <circle
+                                class="progress-ring-circle-bg"
+                                stroke="#e5e7eb"
+                                stroke-width="10"
+                                fill="transparent"
+                                r="90"
+                                cx="100"
+                                cy="100"
+                            />
+                            <circle
+                                id="progress-circle"
+                                class="progress-ring-circle"
+                                stroke="#3B82F6"
+                                stroke-width="10"
+                                fill="transparent"
+                                r="90"
+                                cx="100"
+                                cy="100"
+                            />
+                        </svg>
+                        <div class="progress-text" id="progress-text">0%</div>
+                    </div>
+              </div>
+              <div class="controls">
+                <button id="timer-start" class="btn btn-success">
+                    <i class="fas fa-play"></i> Start
+                </button>
+                <button id="timer-pause" class="btn btn-warning" disabled>
+                    <i class="fas fa-pause"></i> Pause
+                </button>
+                <button id="timer-reset" class="btn btn-secondary">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </div>
+      </div>
+      <!-- Footer -->
+        <footer>
+            <p>Made with ☕ and JavaScript | <a href="https://100devprojects.in" target="_blank">100 Dev Projects</a></p>
+            <p class="shortcuts">
+                <strong>Shortcuts:</strong> Space = Start/Stop | R = Reset | L = Lap | D = Dark Mode
+            </p>
+        </footer>
+    </section>
+     <!-- Audio for Timer Alert -->
+    <audio id="timer-alert" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBipy0O3egjYJFV+67OScTAQLT6Ll8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM/s3YI2CRVfuuzknEwEC0+j5PCyYBoEO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2CNgkVX7rs5JxMBAtPo+TwsmAaBDuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM7s3YQ1CRVeuuzknkwEC0+j5PCyYBoFO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2ENQkVXrrs5J5MBAtPo+TwsmAaBTuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM7s3YQ1CRVeuuzknkwEC0+j5PCyYBoFO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2ENQkVXrrs5J5MBAtPo+TwsmAaBTuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM7s3YQ1CRVeuuzknkwEC0+j5O+yYBoFO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2ENQkVXrrs5J5MBAtPo+TwsmAaBTuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM7s3YQ1CRVeuuzknkwEC0+j5PCyYBoFO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2ENQkVXrrs5J5MBAtPo+TwsmAaBTuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM7s3YQ1CRVeuuzknkwEC0+j5PCyYBoFO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2ENQkVXrrs5J5MBAtPo+TwsmAaBTuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhELRp3f8bxqHwYpcM7s3YQ1CRVeuuzknkwEC0+j5PCyYBoFO5PX8sN6KQUlc8fx2ow/CxZcs+jrpVIRC0ad3/G8ah8GKXDO7N2ENQkVXrrs5J5MBAtPo+TwsmAaBTuT1/LDeikFJXPH8dqMPwsWXLPo66VSEQtGnd/xvGofBilwzuzdhDUJFV667OSeTAQLT6Pk8LJgGgU7k9fyw3opBSVzx/HajD8LFlyz6OulUhE=" type="audio/wav">
+    </audio>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
