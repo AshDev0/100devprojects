@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -17,6 +16,9 @@ const Header = () => {
             </Link>
             <Link to="/projects" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               Projects
+            </Link>
+            <Link to="/blog" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Blog
             </Link>
             <Link to="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
               About

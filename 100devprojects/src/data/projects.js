@@ -402,7 +402,198 @@ and a fully responsive UI — making it a strong portfolio-ready JavaScript proj
   status: "active",
   featured: true,
   trending: true
-}
+},
+
+  // ============================================
+  // PROJECT 6: COLOR GENERATOR
+  // ============================================
+  {
+    id: 6,
+    title: "Advanced Color Generator & Palette Tool",
+    slug: "color-generator",
+    shortTitle: "Color Generator",
+    category: "JavaScript",
+    difficulty: "Intermediate",
+
+    meta: {
+      title: "Color Generator JavaScript Project | 100 Dev Projects",
+      description:
+        "Build an advanced Color Generator with palette creation, gradient maker, and favorites system using Vanilla JavaScript. Learn color manipulation, localStorage, and complex UI.",
+      keywords: [
+        "color generator javascript",
+        "palette generator",
+        "gradient generator javascript",
+        "color picker javascript",
+        "intermediate javascript project"
+      ],
+      canonicalUrl:
+        "https://100devprojects.in/demos/color-generator/index.html"
+    },
+
+    description:
+      "An advanced Color Generator tool featuring single color generation, palette creation, gradient maker, and favorites management with copy-to-clipboard functionality.",
+
+    longDescription: `
+This Color Generator is an intermediate-level JavaScript project that demonstrates
+advanced DOM manipulation and color manipulation techniques.
+
+Users can generate random colors, create color palettes, design gradients,
+save favorites, and copy color codes in multiple formats (HEX, RGB, HSL).
+
+The app features a tabbed interface, localStorage persistence, and a clean,
+modern UI built with vanilla JavaScript and CSS.
+    `,
+
+    features: [
+      "Single color generation with multiple formats",
+      "5-color palette generator",
+      "Custom gradient creator with CSS code",
+      "Favorites system with localStorage",
+      "Copy to clipboard (HEX, RGB, HSL)",
+      "Tab-based navigation",
+      "Responsive design",
+      "Dark mode support"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "LocalStorage API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Working with color formats (HEX, RGB, HSL)",
+      "Complex state management",
+      "Tab-based UI implementation",
+      "Clipboard API usage",
+      "LocalStorage for favorites",
+      "Dynamic gradient creation",
+      "Advanced DOM manipulation"
+    ],
+
+    demoUrl: "/demos/color-generator/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/color-generator",
+
+    thumbnail: "/images/projects/color-generator.jpg",
+
+    dateAdded: "2024-12-15",
+    estimatedTime: "5–6 hours",
+    tags: [
+      "color",
+      "generator",
+      "palette",
+      "gradient",
+      "javascript",
+      "intermediate",
+      "design-tool"
+    ],
+    status: "active",
+    featured: false,
+    trending: false
+  },
+
+  // ============================================
+  // PROJECT 7: GUESS THE NUMBER GAME
+  // ============================================
+  {
+    id: 7,
+    title: "Guess the Number Game with Statistics",
+    slug: "guess-number-game",
+    shortTitle: "Guess Number Game",
+    category: "JavaScript",
+    difficulty: "Beginner",
+
+    meta: {
+      title: "Guess the Number Game JavaScript | 100 Dev Projects",
+      description:
+        "Build a fun Guess the Number game using Vanilla JavaScript with multiple difficulty levels, statistics tracking, sound effects, and localStorage persistence.",
+      keywords: [
+        "guess number game javascript",
+        "javascript game project",
+        "beginner javascript game",
+        "vanilla javascript project",
+        "number guessing game",
+        "javascript beginner project"
+      ],
+      canonicalUrl:
+        "https://100devprojects.in/demos/guess-number-game/index.html"
+    },
+
+    description:
+      "A fun and interactive number guessing game with multiple difficulty levels, hints, statistics tracking, and persistent storage.",
+
+    longDescription: `
+This Guess the Number Game is a beginner-friendly JavaScript project that teaches
+game logic, state management, and user interaction patterns.
+
+The game challenges users to guess a randomly generated number within a limited number
+of attempts. It includes 4 difficulty levels (Easy to Expert), provides hints,
+tracks player statistics, and saves game history using localStorage.
+
+Built with clean, well-commented code following the "Chai aur Code" style,
+this project is perfect for learning JavaScript fundamentals while having fun!
+    `,
+
+    features: [
+      "4 difficulty levels (Easy, Medium, Hard, Expert)",
+      "Random number generation with configurable ranges",
+      "Smart hints (too high/too low)",
+      "Attempts tracking and validation",
+      "Game statistics dashboard",
+      "Recent games history",
+      "Win streak counter",
+      "Sound effects toggle",
+      "Settings customization",
+      "LocalStorage persistence",
+      "Responsive design",
+      "Keyboard shortcuts (N, S, T)"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "LocalStorage API",
+      "Web Audio API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Game state management",
+      "Random number generation",
+      "Input validation",
+      "Conditional logic & hints",
+      "LocalStorage for data persistence",
+      "Modal dialogs implementation",
+      "Statistics calculation",
+      "Event handling & keyboard shortcuts",
+      "Web Audio API basics",
+      "Clean code organization"
+    ],
+
+    demoUrl: "/demos/guess-number-game/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/guess-number-game",
+
+    thumbnail: "/images/projects/guess-number-game.jpg",
+
+    dateAdded: "2024-12-25",
+    estimatedTime: "3–4 hours",
+    tags: [
+      "game",
+      "guess-number",
+      "javascript",
+      "beginner",
+      "interactive",
+      "fun-project"
+    ],
+    status: "active",
+    featured: true,
+    trending: true
+  }
 ];
 
 // ============================================
