@@ -279,7 +279,7 @@ const app = new TodoApp();
 // ============================================
 // GLOBAL FUNCTIONS (for HTML onclick)
 // ============================================
-function addTodo(event) {
+window.addTodo = function(event) {
     event.preventDefault();
     const text = document.getElementById('todoInput').value;
     const category = document.getElementById('todoCategory').value;
@@ -292,14 +292,14 @@ function addTodo(event) {
     }
 }
 
-function filterTodos() {
+window.filterTodos = function() {
     app.render();
 }
 
-function toggleDarkMode() {
+window.toggleDarkMode = function() {
     app.toggleDarkMode();
 }
 
-function exportData() {
+window.exportData = function() {
     app.exportData();
 }

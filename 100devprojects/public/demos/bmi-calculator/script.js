@@ -153,14 +153,15 @@ function getHistory() {
   return stored ? JSON.parse(stored) : [];
 }
 
-function deleteFromHistory(id) {
+// Make these available globally for inline onclick handlers
+window.deleteFromHistory = function(id) {
   let history = getHistory();
   history = history.filter((item) => item.id !== id);
   localStorage.setItem("bmiHistory", JSON.stringify(history));
   displayHistory();
 }
 
-function clearHistory() {
+window.clearHistory = function() {
   localStorage.removeItem("bmiHistory");
   historyDiv.classList.remove("show");
   historyList.innerHTML = "";
