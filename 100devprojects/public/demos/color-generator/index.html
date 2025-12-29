@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="QCeZ-egdmX1eJER1oF_QrWd8EJ_WEDtWCUkUZEz4rD8"
+    />
+    <title>Color Generator - 100 Dev Projects</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <header>
+          <h1>🎨 Color Generator</h1>
+          <p class="subtitle">Generate beautiful color palettes instantly</p>
+        </header>
+
+        <!-- Tab Navigation  -->
+        <nav class="tabs">
+          <button class="tab-btn active" data-tab="single">
+            <i class="fas fa-palette"></i> Single Color
+          </button>
+          <button class="tab-btn" data-tab="palette">
+            <i class="fas fa-swatchbook"></i> Palette
+          </button>
+          <button class="tab-btn" data-tab="gradient">
+            <i class="fas fa-layer-group"></i> Gradient
+          </button>
+          <button class="tab-btn" data-tab="favorites">
+            <i class="fas fa-heart"></i> Favorites
+          </button>
+        </nav>
+        <!-- ==================== SINGLE COLOR MODE ==================== -->
+        <div id="single-mode" class="mode-content active">
+          <div class="color-display" id="single-color-display">
+            <div class="color-info">
+              <h2 class="color-name" id="color-name">White</h2>
+              <div class="color-codes">
+                <div class="code-item">
+                  <label>HEX</label>
+                  <div class="code-value" id="hex-code" data-value="#ffffff">
+                    <span>#ffffff</span>
+                    <button class="copy-btn" data-format="hex">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="code-item">
+                  <label>RGB</label>
+                  <div
+                    class="code-value"
+                    id="rgb-code"
+                    data-value="rgb(255, 255, 255)"
+                  >
+                    <span>rgb(255, 255, 255)</span>
+                    <button class="copy-btn" data-format="rgb">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="code-item">
+                  <label>HSL</label>
+                  <div
+                    class="code-value"
+                    id="hsl-code"
+                    data-value="hsl(0, 0%, 100%)"
+                  >
+                    <span>hsl(0, 0%, 100%)</span>
+                    <button class="copy-btn" data-format="hsl">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-primary" id="generate-single">
+                <i class="fas fa-sync-alt"></i> Generate New Color
+              </button>
+              <button class="btn btn-success" id="save-color">
+                <i class="fas fa-heart"></i> Save to Favorites
+              </button>
+              <button class="btn btn-secondary" id="pick-color">
+                <i class="fas fa-eye-dropper"></i> Pick Color
+              </button>
+            </div>
+
+            <!-- Shades & Tints -->
+            <div class="shades-section">
+              <h3>Shades & Tint</h3>
+              <div class="shades-grid" id="shades-grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== PALETTE MODE ==================== -->
+        <div id="palette-mode" class="mode-content">
+          <div class="palette-controls">
+            <div class="control-group">
+              <label>Palette Type</label>
+              <select id="palette-type" class="select-input">
+                <option value="random">Random</option>
+                <option value="monochromatic">Monochromatic</option>
+                <option value="complementary">Complementary</option>
+                <option value="analogous">Analogous</option>
+                <option value="triadic">Triadic</option>
+                <option value="tetradic">Tetradic</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="generate-palette">
+              <i class="fas fa-sync-alt"></i> Generate Palette
+            </button>
+            <button class="btn btn-success" id="export-palette">
+              <i class="fas fa-download"></i> Export
+            </button>
+          </div>
+          <!-- Color Palette Display -->
+          <div class="palette-display" id="palette-display">
+            <div class="color-card" data-index="0">
+              <div class="color-box" style="background-color: #3b82f6">
+                <button class="lock-btn" data-index="0">
+                  <i class="fas fa-unlock"></i>
+                </button>
+              </div>
+              <div class="color-card-info">
+                <p class="color-hex">#3B82F6</p>
+                <button class="copy-btn-small" data-index="0">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="color-card" data-index="1">
+              <div class="color-box" style="background-color: #8b5cf6">
+                <button class="lock-btn" data-index="1">
+                  <i class="fas fa-unlock"></i>
+                </button>
+              </div>
+              <div class="color-card-info">
+                <p class="color-hex">#8B5CF6</p>
+                <button class="copy-btn-small" data-index="1">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="color-card" data-index="2">
+              <div class="color-box" style="background-color: #ec4899">
+                <button class="lock-btn" data-index="2">
+                  <i class="fas fa-unlock"></i>
+                </button>
+              </div>
+              <div class="color-card-info">
+                <p class="color-hex">#EC4899</p>
+                <button class="copy-btn-small" data-index="2">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="color-card" data-index="3">
+              <div class="color-box" style="background-color: #f59e0b">
+                <button class="lock-btn" data-index="3">
+                  <i class="fas fa-unlock"></i>
+                </button>
+              </div>
+              <div class="color-card-info">
+                <p class="color-hex">#F59E0B</p>
+                <button class="copy-btn-small" data-index="3">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="color-card" data-index="4">
+              <div class="color-box" style="background-color: #10b981">
+                <button class="lock-btn" data-index="4">
+                  <i class="fas fa-unlock"></i>
+                </button>
+              </div>
+              <div class="color-card-info">
+                <p class="color-hex">#10B981</p>
+                <button class="copy-btn-small" data-index="4">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palette Info -->
+
+          <div class="palette-info">
+            <div class="info-card">
+              <i class="fas fa-info-circle"></i>
+              <div>
+                <strong>Tip:</strong> Click the lock icon to keep a color while
+                generating new palettes. Press <kbd>Space</kbd> to generate a
+                new palette.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== GRADIENT MODE ==================== -->
+         <div id="gradient-mode" class="mode-content">
+          <div class="gradient-display" id="gradient-display">
+            <div class="gradient-preview">
+              <!-- Gradient will be shown here -->
+            </div>
+          </div>
+          <div class="gradient-controls">
+            <div class="control-group">
+              <label>Direction</label>
+              <select id="gradient-direction" class="select-input">
+                <option value="to right">Horizontal →</option>
+                <option value="to bottom">Vertical ↓</option>
+                <option value="to bottom right">Diagonal ↘</option>
+                <option value="135deg">Diagonal (135°)</option>
+                <option value="circle">Radial</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+                    <label>Colors</label>
+                    <div class="gradient-color-inputs">
+                        <input type="color" id="gradient-color-1" value="#3B82F6">
+                        <input type="color" id="gradient-color-2" value="#8B5CF6">
+                        <input type="color" id="gradient-color-3" value="#EC4899">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="randomize-gradient">
+                    <i class="fas fa-random"></i> Randomize
+                </button>
+          </div>
+
+          <div class="gradient-code">
+                <label>CSS Code</label>
+                <div class="code-display" id="gradient-code-display">
+                    <code>background: linear-gradient(to right, #3B82F6, #8B5CF6, #EC4899);</code>
+                    <button class="copy-btn" id="copy-gradient-btn">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+         </div>
+
+        <!-- ==================== FAVORITES MODE ==================== -->
+         <div id="favorites-mode" class="mode-content">
+          <div class="favorites-header">
+            <h2>Saved Colors</h2>
+            <button class="btn btn-danger" id="clear-favorites">
+              <i class="fas fa-trash"></i> Clear All
+            </button>
+          </div>
+          <div class="favorites-grid" id="favorites-grid">
+                <p class="empty-message">No favorite colors yet. Start saving colors you love!</p>
+            </div>
+         </div>
+         <!-- Footer -->
+        <footer>
+            <p>Made with ☕ and JavaScript | <a href="https://100devprojects.in" target="_blank">100 Dev Projects</a></p>
+            <p class="shortcuts">
+                <strong>Shortcuts:</strong> Space = New Color | C = Copy Hex | F = Add to Favorites
+            </p>
+        </footer>
+      </section>
+      <!-- Toast Notification -->
+       <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+      <!-- Hidden Color Picker -->
+      <input type="color" id="hidden-color-picker" style="display: none" />
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

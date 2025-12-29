@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number - 100 dev projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎯 Guess the Number</h1>
+            <p class="subtitle">Can you guess the secret number?</p>
+        </header>
+
+        <!-- Game Card -->
+        <div class="game-card">
+            <!-- Game Info Bar -->
+            <div class="info-bar">
+                <div class="info-item">
+                    <span class="label">Difficulty:</span>
+                    <span class="value" id="difficulty-display">Medium</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Range:</span>
+                    <span class="value" id="range-display">1 - 100</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Attempts Left:</span>
+                    <span class="value highlight" id="attempts-left">10</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">High Score:</span>
+                    <span class="value score" id="high-score">-</span>
+                </div>
+            </div>
+
+            <!-- Mystery Number Display -->
+            <div class="mystery-box" id="mystery-box">
+                <div class="mystery-number">?</div>
+                <p class="mystery-text">I'm thinking of a number...</p>
+            </div>
+
+            <!-- Game Input Section -->
+            <div class="game-section" id="game-section">
+                <form id="guess-form">
+                    <div class="input-group">
+                        <input 
+                            type="number" 
+                            id="guess-input" 
+                            placeholder="Enter your guess"
+                            min="1"
+                            max="500"
+                            required
+                            autofocus
+                        />
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Submit
+                        </button>
+                    </div>
+                    <p class="hint-text" id="hint-text">Enter a number between 1 and 100</p>
+                </form>
+
+                <!-- Feedback Message -->
+                <div class="feedback" id="feedback">
+                    <!-- Feedback messages will appear here -->
+                </div>
+
+                <!-- Previous Guesses -->
+                <div class="guesses-section">
+                    <h3>Previous Guesses</h3>
+                    <div class="guesses-list" id="guesses-list">
+                        <p class="empty-state">No guesses yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Over Section (Hidden initially) -->
+            <div class="game-over" id="game-over" style="display: none;">
+                <div class="result-animation">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 id="result-title">Congratulations!</h2>
+                <p id="result-message">You guessed it in 5 attempts!</p>
+                <div class="revealed-number">
+                    The number was: <span id="revealed-number">42</span>
+                </div>
+                <button class="btn btn-success" id="play-again-btn">
+                    <i class="fas fa-redo"></i> Play Again
+                </button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="new-game-btn">
+                    <i class="fas fa-plus"></i> New Game
+                </button>
+                <button class="btn btn-info" id="settings-btn">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+                <button class="btn btn-warning" id="stats-btn">
+                    <i class="fas fa-chart-bar"></i> Stats
+                </button>
+            </div>
+        </div>
+
+        <!-- Settings Modal (Hidden initially) -->
+        <div class="modal" id="settings-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Game Settings</h2>
+                    <button class="close-btn" id="close-settings">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label>Difficulty Level</label>
+                        <select id="difficulty-select" class="select-input">
+                            <option value="easy">Easy (1-50, 15 attempts)</option>
+                            <option value="medium" selected>Medium (1-100, 10 attempts)</option>
+                            <option value="hard">Hard (1-200, 7 attempts)</option>
+                            <option value="expert">Expert (1-500, 5 attempts)</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="timer-mode" />
+                            Enable Timer Mode (60 seconds)
+                        </label>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="sound-effects" checked />
+                            Enable Sound Effects
+                        </label>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="hints-enabled" checked />
+                            Enable Hints
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="save-settings">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                    <button class="btn btn-secondary" id="reset-stats">
+                        <i class="fas fa-trash"></i> Reset All Stats
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Modal (Hidden initially) -->
+        <div class="modal" id="stats-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Game Statistics</h2>
+                    <button class="close-btn" id="close-stats">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-gamepad"></i>
+                            <div class="stat-value" id="total-games">0</div>
+                            <div class="stat-label">Total Games</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-trophy"></i>
+                            <div class="stat-value" id="games-won">0</div>
+                            <div class="stat-label">Games Won</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-percentage"></i>
+                            <div class="stat-value" id="win-rate">0%</div>
+                            <div class="stat-label">Win Rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-star"></i>
+                            <div class="stat-value" id="best-score">-</div>
+                            <div class="stat-label">Best Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="stat-value" id="avg-guesses">0</div>
+                            <div class="stat-label">Avg. Guesses</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-fire"></i>
+                            <div class="stat-value" id="current-streak">0</div>
+                            <div class="stat-label">Win Streak</div>
+                        </div>
+                    </div>
+
+                    <div class="recent-games">
+                        <h3>Recent Games</h3>
+                        <div id="recent-games-list">
+                            <p class="empty-state">No games played yet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Made with ☕ and JavaScript | <a href="https://100devprojects.in" target="_blank">100 Dev Projects</a></p>
+            <p class="shortcuts">
+                <strong>Tip:</strong> Press <kbd>Enter</kbd> to submit • <kbd>N</kbd> for new game • <kbd>S</kbd> for settings
+            </p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Message here</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

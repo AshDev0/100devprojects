@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProjectBySlug } from '../data/projects.js';
 import { useSEO } from '../hooks/useSEO';
@@ -6,14 +5,14 @@ import { useSEO } from '../hooks/useSEO';
 const ProjectDetail = () => {
   const { slug } = useParams();
   const project = getProjectBySlug(slug);
-  
+
   // Use SEO Hook
   useSEO({
     title: project?.meta?.title || '100 Dev Projects',
     description: project?.meta?.description || 'Learn web development',
     keywords: project?.meta?.keywords?.join(', ') || '',
-    ogImage: project?.meta?.ogImage 
-      ? `https://100devprojects.in${project.meta.ogImage}` 
+    ogImage: project?.meta?.ogImage
+      ? `https://100devprojects.in${project.meta.ogImage}`
       : 'https://100devprojects.in/og-default.jpg',
     canonicalUrl: project?.meta?.canonicalUrl || 'https://100devprojects.in'
   });
@@ -40,24 +39,51 @@ const ProjectDetail = () => {
         </div>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-linear-to-r from-blue-600 to-purple-600 p-8 text-white">
-            <div className="flex items-center gap-3 mb-4">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-white">
+            <div className="flex items-center gap-3 mb-4 flex-wrap">
               <span className="px-4 py-1 bg-white/20 rounded-full text-sm font-medium">
                 {project.category}
               </span>
               <span className="px-4 py-1 bg-white/20 rounded-full text-sm font-medium">
                 {project.difficulty}
               </span>
+              {project.featured && (
+                <span className="px-4 py-1 bg-yellow-400 text-yellow-900 rounded-full text-sm font-bold">
+                  ⭐ Featured
+                </span>
+              )}
+              {project.trending && (
+                <span className="px-4 py-1 bg-pink-500 text-white rounded-full text-sm font-bold">
+                  🔥 Trending
+                </span>
+              )}
             </div>
             <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-            <p className="text-xl text-blue-100">{project.description}</p>
+            <p className="text-xl text-blue-100 mb-4">{project.description}</p>
+
+            {/* Meta Info */}
+            <div className="flex flex-wrap gap-4 text-sm text-blue-100">
+              {project.estimatedTime && (
+                <div className="flex items-center gap-2">
+                  <span>⏱️</span>
+                  <span>{project.estimatedTime}</span>
+                </div>
+              )}
+              {project.dateAdded && (
+                <div className="flex items-center gap-2">
+                  <span>📅</span>
+                  <span>Added: {new Date(project.dateAdded).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Content */}
           <div className="p-8">
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a 
+              <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -65,7 +91,7 @@ const ProjectDetail = () => {
               >
                 🚀 View Live Demo
               </a>
-              <a 
+              <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -75,6 +101,16 @@ const ProjectDetail = () => {
               </a>
             </div>
 
+            {/* Long Description */}
+            {project.longDescription && (
+              <div className="mb-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">About This Project</h2>
+                <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                  {project.longDescription}
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Features */}
               <div>
@@ -82,7 +118,7 @@ const ProjectDetail = () => {
                 <ul className="space-y-3">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <span className="text-green-600 mt-1">✓</span>
+                      <span className="text-green-600 mt-1 text-lg">✓</span>
                       <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
@@ -108,9 +144,9 @@ const ProjectDetail = () => {
               <h2 className="text-2xl font-bold mb-4 text-gray-800">Tech Stack</h2>
               <div className="flex flex-wrap gap-3">
                 {project.techStack.map((tech, index) => (
-                  <span 
-                    key={index} 
-                    className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium"
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-gray-800 rounded-lg font-medium border border-blue-200"
                   >
                     {tech}
                   </span>
@@ -123,9 +159,9 @@ const ProjectDetail = () => {
               <h2 className="text-2xl font-bold mb-4 text-gray-800">Tags</h2>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
-                  <span 
-                    key={index} 
-                    className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm"
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm hover:bg-blue-100 transition-colors cursor-pointer"
                   >
                     #{tag}
                   </span>
@@ -137,8 +173,8 @@ const ProjectDetail = () => {
 
         {/* Back Button */}
         <div className="mt-8 text-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium"
           >
             ← Back to All Projects

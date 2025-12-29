@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { projects, categories, difficultyLevels } from '../data/projects';
 import { useSEO } from '../hooks/useSEO';
@@ -26,23 +26,26 @@ const Home = () => {
     return matchesCategory && matchesDifficulty && matchesSearch;
   });
 
+  const featuredProjects = projects.filter(p => p.featured);
+  const trendingProjects = projects.filter(p => p.trending);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-linear-to-r from-blue-600 to-purple-600 text-white py-20">
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-4">100 Dev Projects</h1>
           <p className="text-xl mb-8 text-blue-100">
             Learn by building real-world projects. From beginner to advanced.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a 
-              href="#projects" 
+            <a
+              href="#projects"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Explore Projects
             </a>
-            <a 
+            <a
               href="https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos"
               target="_blank"
               rel="noopener noreferrer"
@@ -54,9 +57,72 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Statistics Section */}
+      <section className="bg-white py-12 shadow-md">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">{projects.length}+</div>
+              <p className="text-gray-600 font-medium">Projects Available</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-purple-600 mb-2">10+</div>
+              <p className="text-gray-600 font-medium">Technologies</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-green-600 mb-2">100%</div>
+              <p className="text-gray-600 font-medium">Free Forever</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-pink-600 mb-2">∞</div>
+              <p className="text-gray-600 font-medium">Learning Opportunities</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects Section */}
+      {selectedCategory === 'All' && selectedDifficulty === 'All' && !searchTerm && featuredProjects.length > 0 && (
+        <section className="container mx-auto px-4 py-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+              <span>⭐</span>
+              Featured Projects
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProjects.map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Trending Projects Section */}
+      {selectedCategory === 'All' && selectedDifficulty === 'All' && !searchTerm && trendingProjects.length > 0 && (
+        <section className="container mx-auto px-4 py-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+              <span>🔥</span>
+              Trending Now
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {trendingProjects.map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Filters Section */}
       <section className="container mx-auto px-4 py-8" id="projects">
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">
+            {searchTerm || selectedCategory !== 'All' || selectedDifficulty !== 'All'
+              ? 'Search & Filter Projects'
+              : 'Browse All Projects'}
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Search */}
             <div>
