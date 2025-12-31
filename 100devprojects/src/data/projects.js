@@ -593,6 +593,110 @@ this project is perfect for learning JavaScript fundamentals while having fun!
     status: "active",
     featured: true,
     trending: true
+  },
+
+  // ============================================
+  // PROJECT 8: WEATHER APP
+  // ============================================
+  {
+    id: 8,
+    title: "Weather App with 5-Day Forecast",
+    slug: "weather-app",
+    shortTitle: "Weather App",
+    category: "JavaScript",
+    difficulty: "Intermediate",
+
+    meta: {
+      title: "Weather App JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a real-time Weather App using Vanilla JavaScript and OpenWeather API. Features include current weather, 5-day forecast, hourly forecast, geolocation, and localStorage.",
+      keywords: [
+        "weather app javascript",
+        "openweather api project",
+        "javascript weather app",
+        "forecast app javascript",
+        "intermediate javascript project",
+        "api integration javascript"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/weather-app/index.html"
+    },
+
+    description:
+      "A comprehensive Weather App built with Vanilla JavaScript that displays real-time weather data, 5-day forecast, hourly forecast, and recent searches using OpenWeather API.",
+
+    longDescription: `
+This Weather App is an intermediate-level JavaScript project that demonstrates
+working with external APIs, handling asynchronous operations, and managing application state.
+
+Users can search for any city worldwide, get weather by geolocation, view current weather
+conditions with detailed metrics, check 5-day and hourly forecasts, toggle between
+Celsius and Fahrenheit, and access recent search history.
+
+The app features dynamic backgrounds based on weather conditions, error handling,
+loading states, and localStorage persistence — making it a production-ready portfolio project.
+    `,
+
+    features: [
+      "Real-time weather data via OpenWeather API",
+      "Search by city name with suggestions",
+      "Geolocation-based weather detection",
+      "Current weather with icon, temperature, and feels-like",
+      "Detailed metrics (humidity, wind, pressure, visibility)",
+      "Sunrise and sunset times",
+      "5-day weather forecast",
+      "24-hour hourly forecast",
+      "Temperature unit toggle (°C / °F)",
+      "Recent searches with localStorage",
+      "Dynamic weather-based backgrounds",
+      "Error handling and loading states",
+      "Toast notifications",
+      "Fully responsive design"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "OpenWeather API",
+      "LocalStorage API",
+      "Geolocation API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Working with REST APIs",
+      "Async/await and Promises",
+      "API key management",
+      "Geolocation API usage",
+      "State management without frameworks",
+      "Error handling for API calls",
+      "Data transformation and grouping",
+      "LocalStorage for persistence",
+      "Dynamic UI updates",
+      "Date and time formatting",
+      "Responsive weather UI design"
+    ],
+
+    demoUrl: "/demos/weather-app/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/weather-app",
+
+    thumbnail: "/images/projects/weather-app.jpg",
+
+    dateAdded: "2024-12-31",
+    estimatedTime: "5–7 hours",
+    tags: [
+      "weather",
+      "api",
+      "javascript",
+      "intermediate",
+      "forecast",
+      "openweather",
+      "portfolio-project"
+    ],
+    status: "active",
+    featured: true,
+    trending: true
   }
 ];
 
