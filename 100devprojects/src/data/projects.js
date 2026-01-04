@@ -73,7 +73,7 @@ making it perfect for a beginner portfolio.
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/bmi-calculator",
 
-    thumbnail: "/images/projects/bmi-calculator.jpg",
+    thumbnail: "/images/projects/bmi_calculator.webp",
 
     dateAdded: "2024-12-15",
     estimatedTime: "2–3 hours",
@@ -145,7 +145,7 @@ basic calculations, and updating the DOM dynamically.
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/tip-calculator",
 
-    thumbnail: "/images/projects/tip-calculator.jpg",
+    thumbnail: "/images/projects/tip_calculator.webp",
 
     dateAdded: "2024-12-15",
     estimatedTime: "30–45 minutes",
@@ -216,7 +216,7 @@ and delete tasks with a clean Tailwind CSS interface.
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/todo-app",
 
-    thumbnail: "/images/projects/todo-app-basic.jpg",
+    thumbnail: "/images/projects/todo_app.webp",
 
     dateAdded: "2024-12-15",
     estimatedTime: "1–2 hours",
@@ -295,7 +295,7 @@ making it a strong portfolio project.
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/todo-app-advanced",
 
-    thumbnail: "/images/projects/advanced-todo-app.jpg",
+    thumbnail: "/images/projects/advance_todo_app.webp",
 
     dateAdded: "2024-12-15",
     estimatedTime: "6–8 hours",
@@ -386,7 +386,7 @@ and a fully responsive UI — making it a strong portfolio-ready JavaScript proj
   githubUrl:
     "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/digital-clock",
 
-  thumbnail: "/images/projects/digital-clock.jpg",
+  thumbnail: "/images/projects/digital_clock.webp",
 
   dateAdded: "2024-12-15",
   estimatedTime: "4–5 hours",
@@ -477,7 +477,7 @@ modern UI built with vanilla JavaScript and CSS.
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/color-generator",
 
-    thumbnail: "/images/projects/color-generator.jpg",
+    thumbnail: "/images/projects/advance_color_generator.webp",
 
     dateAdded: "2024-12-15",
     estimatedTime: "5–6 hours",
@@ -578,7 +578,7 @@ this project is perfect for learning JavaScript fundamentals while having fun!
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/guess-number-game",
 
-    thumbnail: "/images/projects/guess-number-game.jpg",
+    thumbnail: "/images/projects/guess_the_number.webp",
 
     dateAdded: "2024-12-25",
     estimatedTime: "3–4 hours",
@@ -681,7 +681,7 @@ loading states, and localStorage persistence — making it a production-ready po
     githubUrl:
       "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/weather-app",
 
-    thumbnail: "/images/projects/weather-app.jpg",
+    thumbnail: "/images/projects/weather_app.webp",
 
     dateAdded: "2024-12-31",
     estimatedTime: "5–7 hours",

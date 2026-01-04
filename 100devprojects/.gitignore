@@ -11,7 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
-CLAUDE.md
+
+
+# Markdown files (except README.md)
+*.md
+!README.md
 
 # Editor directories and files
 .vscode/*

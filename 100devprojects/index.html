@@ -32,6 +32,43 @@
 
     <!-- Canonical -->
     <link rel="canonical" href="https://100devprojects.in/" />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B4MHF65TG6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B4MHF65TG6');
+    </script>
+
+    <!-- Schema.org Structured Data - Organization & Website -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "100 Dev Projects",
+      "url": "https://100devprojects.in",
+      "description": "Learn JavaScript, React and Web Development by building 100+ real-world projects with step-by-step tutorials.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "100 Dev Projects",
+        "url": "https://100devprojects.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://100devprojects.in/logo.png"
+        },
+        "sameAs": [
+          "https://github.com/AshDev0/100devprojects"
+        ]
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://100devprojects.in/projects?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -32,27 +32,66 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">100 Dev Projects</h1>
-          <p className="text-xl mb-8 text-blue-100">
-            Learn by building real-world projects. From beginner to advanced.
+      <section className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-24 md:py-32 overflow-hidden bg-300% animate-gradient">
+        {/* Floating Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-40 right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          {/* Animated Heading */}
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 animate-fade-in">
+            <span className="inline-block hover:scale-110 transition-transform">100</span>
+            {' '}
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-yellow-300 to-pink-300">
+              Dev Projects
+            </span>
+          </h1>
+
+          <p className="text-xl md:text-2xl mb-4 text-blue-100 max-w-3xl mx-auto font-medium">
+            Learn by building <span className="text-yellow-300 font-bold">real-world projects</span>.
+            From beginner to advanced.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+          <p className="text-md md:text-lg mb-10 text-blue-200 max-w-2xl mx-auto">
+            Master JavaScript, React, and web development with hands-on tutorials and production-ready code.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <a
               href="#projects"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="group bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all shadow-xl"
             >
-              Explore Projects
+              <span className="flex items-center justify-center gap-2">
+                Explore Projects
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
             </a>
             <a
               href="https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              className="group border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 hover:scale-105 active:scale-95 transition-all"
             >
-              View on GitHub
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+                View on GitHub
+              </span>
             </a>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="inline-block animate-bounce">
+            <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </div>
         </div>
       </section>
