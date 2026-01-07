@@ -4,15 +4,20 @@
 User-agent: *
 Allow: /
 
-# Disallow crawling of specific directories (if needed)
-# Disallow: /admin/
-# Disallow: /api/
-# Disallow: /private/
-
-# Crawl-delay (optional, for slower crawling)
-# Crawl-delay: 1
+# Prioritize important sections for crawling
+Allow: /blog/
+Allow: /project/
+Allow: /demos/
 
 # Sitemap location (IMPORTANT!)
 Sitemap: https://100devprojects.in/sitemap.xml
 
-# Additional sitemaps (if you have multiple)
+# Special instructions for Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import BlogCard from '../components/BlogCard';
-import { blogs, blogCategories, getFeaturedBlogs } from '../data/blogs';
+import { blogs, blogCategories, getFeaturedBlogs } from '../data/blogs/index';
 import { useSEO } from '../hooks/useSEO';
 
 const Blog = () => {

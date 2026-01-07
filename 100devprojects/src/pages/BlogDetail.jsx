@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
-import { getBlogBySlug, getRelatedBlogs } from '../data/blogs';
+import { useEffect } from 'react';
+import { getBlogBySlug, getRelatedBlogs } from '../data/blogs/index';
 import { projects } from '../data/projects';
 import { useSEO } from '../hooks/useSEO';
 import BlogCard from '../components/BlogCard';
@@ -15,6 +16,50 @@ const BlogDetail = () => {
     keywords: blog?.meta?.keywords?.join(', ') || '',
     canonicalUrl: blog?.meta?.canonicalUrl || 'https://100devprojects.in/blog'
   });
+
+  // Add Schema.org Article structured data
+  useEffect(() => {
+    if (!blog) return;
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": blog.title,
+      "description": blog.excerpt,
+      "image": `https://100devprojects.in/og-image.png`,
+      "datePublished": blog.datePublished,
+      "dateModified": blog.datePublished,
+      "author": {
+        "@type": "Person",
+        "name": blog.author,
+        "url": "https://100devprojects.in"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "100 Dev Projects",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://100devprojects.in/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": blog.meta.canonicalUrl
+      },
+      "keywords": blog.meta.keywords.join(', '),
+      "articleSection": blog.category,
+      "wordCount": blog.content.split(' ').length
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [blog]);
 
   if (!blog) {
     return (

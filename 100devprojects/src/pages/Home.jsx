@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
+import BlogCard from '../components/BlogCard';
 import { projects, categories, difficultyLevels } from '../data/projects';
+import { getFeaturedBlogs } from '../data/blogs/index';
 import { useSEO } from '../hooks/useSEO';
 
 const Home = () => {
@@ -28,6 +31,7 @@ const Home = () => {
 
   const featuredProjects = projects.filter(p => p.featured);
   const trendingProjects = projects.filter(p => p.trending);
+  const featuredBlogs = getFeaturedBlogs().slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -149,6 +153,32 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trendingProjects.map(project => (
               <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Featured Blog Posts Section */}
+      {selectedCategory === 'All' && selectedDifficulty === 'All' && !searchTerm && featuredBlogs.length > 0 && (
+        <section className="container mx-auto px-4 py-12 bg-linear-to-br from-purple-50 to-blue-50 rounded-2xl my-8">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+              <span>📚</span>
+              Latest Tutorials & Guides
+            </h2>
+            <Link
+              to="/blog"
+              className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 group"
+            >
+              View All
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredBlogs.map(blog => (
+              <BlogCard key={blog.id} blog={blog} />
             ))}
           </div>
         </section>
