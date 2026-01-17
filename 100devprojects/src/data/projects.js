@@ -697,6 +697,104 @@ loading states, and localStorage persistence — making it a production-ready po
     status: "active",
     featured: true,
     trending: true
+  },
+
+  // ============================================
+  // PROJECT 9: QUIZ APP
+  // ============================================
+  {
+    id: 9,
+    title: "Quiz App with Timer & High Scores",
+    slug: "quiz-app",
+    shortTitle: "Quiz App",
+    category: "JavaScript",
+    difficulty: "Intermediate",
+
+    meta: {
+      title: "Quiz App JavaScript Project | 100 Dev Projects",
+      description:
+        "Build an interactive Quiz App using Vanilla JavaScript with multiple categories, difficulty levels, timer modes, high scores, and review functionality.",
+      keywords: [
+        "quiz app javascript",
+        "javascript quiz game",
+        "trivia app javascript",
+        "intermediate javascript project",
+        "quiz game with timer",
+        "javascript localstorage project"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/quiz-app/index.html"
+    },
+
+    description:
+      "An interactive Quiz App with multiple categories, difficulty levels, timer modes, hint system, high score tracking, and answer review functionality.",
+
+    longDescription: `
+This Quiz App is an intermediate-level JavaScript project that demonstrates
+state management, timer implementation, and localStorage persistence.
+
+Users can select from 6 categories (General, Science, History, Geography, Sports, Movies),
+choose difficulty levels, and play with different timer modes.
+
+Features include hint system, progress tracking, detailed results with percentage breakdown,
+answer review, high score leaderboard, and social sharing - making it a complete portfolio project.
+    `,
+
+    features: [
+      "6 quiz categories with 100+ questions",
+      "3 difficulty levels (Easy, Medium, Hard)",
+      "3 timer modes (Per Quiz, Per Question, No Timer)",
+      "Hint system with score penalty",
+      "Progress bar and score tracking",
+      "Detailed results with breakdown",
+      "Answer review functionality",
+      "High score leaderboard with localStorage",
+      "Share results feature",
+      "Toast notifications",
+      "Responsive design"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "LocalStorage API",
+      "Web Share API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Complex state management",
+      "Timer implementation with setInterval",
+      "Question shuffling algorithms",
+      "Score calculation logic",
+      "LocalStorage for high scores",
+      "Dynamic UI rendering",
+      "Modal and screen transitions",
+      "Share API integration",
+      "Data filtering and mapping"
+    ],
+
+    demoUrl: "/demos/quiz-app/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/quiz-app",
+
+    thumbnail: "/images/projects/quiz_app.webp",
+
+    dateAdded: "2026-01-17",
+    estimatedTime: "5–6 hours",
+    tags: [
+      "quiz",
+      "game",
+      "trivia",
+      "javascript",
+      "intermediate",
+      "timer",
+      "localstorage",
+      "portfolio-project"
+    ],
+    status: "active",
+    featured: true,
+    trending: true
   }
 ];
 

@@ -6,6 +6,8 @@
 
 // New modular blogs
 import { asyncJavaScriptBlog } from './async-javascript';
+import { asyncJavaScriptHindiBlog } from './async-javascript-hindi';
+import { localStorageHindiBlog } from './localstorage-hindi';
 
 // Old blogs (temporary - will be migrated gradually)
 import { blogs as oldBlogs } from '../blogs';
@@ -16,6 +18,8 @@ import { blogs as oldBlogs } from '../blogs';
 // Combines new modular blogs with old structure
 // Old blogs are filtered to exclude already migrated ones
 export const blogs = [
+  localStorageHindiBlog,  // ID 8 - LocalStorage Complete Guide Hindi
+  asyncJavaScriptHindiBlog,  // ID 7 - Async JavaScript Hindi Tutorial
   asyncJavaScriptBlog,  // ID 6 - Migrated to modular structure
   ...oldBlogs.filter(blog => blog.id !== 6)  // IDs 1-5 - Still in old structure
 ];

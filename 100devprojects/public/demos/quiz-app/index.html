@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="QCeZ-egdmX1eJER1oF_QrWd8EJ_WEDtWCUkUZEz4rD8" />
+    <title>Quiz App | 100devprojects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+    <section class="container">
+        <header>
+            <h1>🧠 Quiz Master</h1>
+            <p class="subtitle">Test your knowledge and challenge yourself!</p>
+        </header>
+
+        <div class="quiz-container">
+            <div class="start-screen" id="start-screen">
+                <div class="welcome-section">
+                    <i class="fas fa-graduation-cap welcome-icon"></i>
+                    <h2>Welcome to Quiz Master!</h2>
+                    <p>Choose your quiz settings and start testing your knowledge</p>
+                </div>
+
+
+                <!-- Quiz Settings -->
+                 <div class="quiz-settings">
+                    <div class="settings-group">
+                        <label>
+                            <i class="fas fa-list"></i> Select Category
+                        </label>
+                        <select id="category-select" class="select-input">
+                            <option value="general">General Knowledge</option>
+                            <option value="science">Science &amp; Nature</option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                            <option value="sports">Sports</option>
+                            <option value="movies">Movies & Entertainment</option>
+                        </select>
+                    </div>
+                    <div class="settings-group">
+                        <label>
+                            <i class="fas fa-signal"></i> Select Difficulty
+                        </label>
+                        <select id="difficulty-select" class="select-input">
+                            <option value="easy">Easy (10 Questions)</option>
+                            <option value="medium">Medium (15 Questions)</option>
+                            <option value="hard">Hard (20 Questions)</option>
+                        </select>
+                    </div>
+                    <div class="settings-group">
+                        <label>
+                            <i class="fas fa-clock"></i>
+                        </label>
+                        <div class="toggle-group">
+                            <label class="toggle-option">
+                                <input type="radio" name="timer" value="perQuiz" checked>
+                                <span>Per Quiz (2 min)</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="timer" value="perQuestion">
+                                <span>Per Question (20s)</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="timer" value="none">
+                                <span>No Timer</span>
+                            </label>
+                        </div>
+                    </div>
+                 </div>
+                 <button class="btn btn-primary btn-large" id="start-quiz-btn">
+                    <i class="fas fa-play"></i> Start Quiz
+                </button>
+                <!-- High Scores Preview -->
+                 <div class="high-scores-preview" id="high-scores-preview">
+                    <h3>🏆 Top Scores</h3>
+                    <div id="top-scores-list">
+                        <p class="empty-state">No high scores yet. Be the first!</p>
+                    </div>
+                 </div>
+            </div>
+            <!-- Quiz Screen -->
+             <div class="quiz-screen" id="quiz-screen">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <div class="info-item">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Question <strong id="current-question">1</strong> of <strong id="total-question">10</strong></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-star"></i>
+                            <span>Score: <strong id="current-score">0</strong></span>
+                        </div>
+                    </div>
+                    <div class="timer-section" id="timer-section">
+                        <div class="timer-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="timer-display">
+                            <span id="timer-text">02:00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Progress Bar -->
+                 <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                 </div>
+                 <!-- Question Card -->
+                  <div class="question-card">
+                    <div class="question-header">
+                        <span class="category-badge" id="question-category">General Knowledge</span>
+                        <span class="difficulty-badge" id="question-difficulty">Medium</span>
+                    </div>
+                    <h2 class="question-text" id="question-text">
+                        What is the capital of France?
+                    </h2>
+                    <!-- Options -->
+                     <div class="options-container" id="options-container">
+                        <div class="option-item" data-option="0">
+                            <span class="option-label">A</span>
+                            <span class="option-text">Paris</span>
+                            <i class="option-icon"></i>
+                        </div>
+                        <div class="option-item" data-option="1">
+                            <span class="option-label">B</span>
+                            <span class="option-text">London</span>
+                            <i class="option-icon"></i>
+                        </div>
+                        <div class="option-item" data-option="2">
+                            <span class="option-label">C</span>
+                            <span class="option-text">Berlin</span>
+                            <i class="option-icon"></i>
+                        </div>
+                        <div class="option-item" data-option="3">
+                            <span class="option-label">D</span>
+                            <span class="option-text">Madrid</span>
+                            <i class="option-icon"></i>
+                        </div>
+                     </div>
+                     <!-- Hint Section (Hidden by default) -->
+                      <div class="hint-section" id="hint-section" style="display: none;">
+                        <i class="fas fa-lightbulb"></i>
+                        <p id="hint-text">This city is known as the "City of Light"</p>
+                    </div>
+                  </div>
+                  <!-- Navigation Buttons -->
+                   <div class="quiz-navigation">
+                    <button class="btn btn-secondary" id="hint-btn">
+                        <i class="fas fa-lightbulb"></i> Hint
+                    </button>
+                    <div class="nav-buttons">
+                        <button class="btn btn-outline" id="prev-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-btn" disabled>
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-success" id="submit-btn" style="display: none;">
+                            <i class="fas fa-check"></i> Submit Quiz
+                        </button>
+                    </div>
+                    <button class="btn btn-warning" id="quit-btn">
+                        <i class="fas fa-times"></i> Quit
+                    </button>
+                </div>
+             </div>
+             <!-- Results Screen -->
+              <div class="results-screen" id="results-screen">
+                <div class="results-animation" id="results-animation">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 id="results-title">Congratulations! 🎉</h2>
+                <p id="results-subtitle">You've completed the quiz</p>
+                <!-- Score Card -->
+                 <div class="score-card">
+                    <div class="score-main">
+                        <h3>Your Score</h3>
+                        <div class="score-value">
+                            <span id="final-score"></span>
+                            <span class="score-total">/ <span id="score-total">10</span></span>
+                        </div>
+                        <div class="score-percentage" id="score-percentage">80%</div>
+                    </div>
+                    <div class="score-breakdown">
+                        <div class="breakdown-item correct">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong id="correct-count">8</strong>
+                                <span>Correct</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-item wrong">
+                            <i class="fas fa-times-circle"></i>
+                            <div>
+                                <strong id="wrong-count">2</strong>
+                                <span>Wrong</span>
+                            </div>
+                        </div>
+                        <div class="breakdown-item skipped">
+                            <i class="fas fa-forward"></i>
+                            <div>
+                                <strong id="skipped-count">0</strong>
+                                <span>Skipped</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-taken">
+                        <i class="fas fa-clock"></i>
+                        <span>Time Taken: <strong id="time-taken">1:45</strong></span>
+                    </div>
+                 </div>
+                 <!-- Performance Message -->
+                <div class="performance-message" id="performance-message">
+                    <i class="fas fa-star"></i>
+                    <p>Excellent work! You're a quiz master!</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="results-actions">
+                    <button class="btn btn-primary" id="review-btn">
+                        <i class="fas fa-eye"></i> Review Answers
+                    </button>
+                    <button class="btn btn-success" id="play-again-btn">
+                        <i class="fas fa-redo"></i> Play Again
+                    </button>
+                    <button class="btn btn-info" id="share-btn">
+                        <i class="fas fa-share-alt"></i> Share Results
+                    </button>
+                </div>
+
+                <!-- New High Score Banner (Hidden by default) -->
+                <div class="high-score-banner" id="high-score-banner" style="display: none;">
+                    <i class="fas fa-trophy"></i>
+                    <span>New High Score!</span>
+                </div>
+              </div>
+              <!-- Review Screen -->
+            <div class="review-screen" id="review-screen" style="display: none;">
+                <div class="review-header">
+                    <h2>Review Your Answers</h2>
+                    <button class="btn btn-outline" id="close-review-btn">
+                        <i class="fas fa-times"></i> Close Review
+                    </button>
+                </div>
+
+                <div class="review-container" id="review-container">
+                    <!-- Review items will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toast-message">Message</span>
+    </div>
+    <!-- Sound Effects (Optional) -->
+    <audio id="correct-sound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjGH0fPTgjMGHm7A7+OZURE="></audio>
+    <audio id="wrong-sound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq+wsbKztLW2t7i5uru8vb6/wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t/g4eLj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+/w=="></audio>
+  <script src="./questions.js"></script>  
+  <script src="./script.js"></script>  
+</body>
+</html>
