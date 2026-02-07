@@ -34,6 +34,7 @@ module.exports = {
         'gradient': 'gradient 8s ease infinite',
         'shimmer': 'shimmer 2s infinite',
         'fade-in': 'fade-in 1s ease-out',
+        'slide-up': 'slide-up 0.6s ease-out',
       },
       backgroundSize: {
         '300%': '300%',

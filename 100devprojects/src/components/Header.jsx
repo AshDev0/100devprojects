@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -83,7 +84,7 @@ const Header = () => {
       {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
-        onClose={() => setIsMobileMenuOpen(false)}
+        onClose={closeMobileMenu}
       />
     </>
   );

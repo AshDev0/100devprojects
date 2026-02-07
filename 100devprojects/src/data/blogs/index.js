@@ -8,6 +8,8 @@
 import { asyncJavaScriptBlog } from './async-javascript';
 import { asyncJavaScriptHindiBlog } from './async-javascript-hindi';
 import { localStorageHindiBlog } from './localstorage-hindi';
+import { javascriptBasicsHindiBlog } from './javascript-basics-hindi';
+import { domManipulationHindiBlog } from './dom-manipulation-hindi';
 
 // Old blogs (temporary - will be migrated gradually)
 import { blogs as oldBlogs } from '../blogs';
@@ -18,6 +20,8 @@ import { blogs as oldBlogs } from '../blogs';
 // Combines new modular blogs with old structure
 // Old blogs are filtered to exclude already migrated ones
 export const blogs = [
+  domManipulationHindiBlog,  // ID 10 - DOM Manipulation Hindi Tutorial
+  javascriptBasicsHindiBlog,  // ID 9 - JavaScript Basics Hindi Tutorial
   localStorageHindiBlog,  // ID 8 - LocalStorage Complete Guide Hindi
   asyncJavaScriptHindiBlog,  // ID 7 - Async JavaScript Hindi Tutorial
   asyncJavaScriptBlog,  // ID 6 - Migrated to modular structure

@@ -19,13 +19,15 @@ const Home = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
+  const filtersActive = searchTerm || selectedCategory !== 'All' || selectedDifficulty !== 'All';
+
   const filteredProjects = projects.filter(project => {
     const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
     const matchesDifficulty = selectedDifficulty === 'All' || project.difficulty === selectedDifficulty;
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          project.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+
     return matchesCategory && matchesDifficulty && matchesSearch;
   });
 
@@ -33,23 +35,29 @@ const Home = () => {
   const trendingProjects = projects.filter(p => p.trending);
   const featuredBlogs = getFeaturedBlogs().slice(0, 3);
 
+  const clearFilters = () => {
+    setSelectedCategory('All');
+    setSelectedDifficulty('All');
+    setSearchTerm('');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-24 md:py-32 overflow-hidden bg-300% animate-gradient">
+      <section className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-24 md:py-32 pb-32 md:pb-40 overflow-hidden bg-300% animate-gradient">
         {/* Floating Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-40 right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-40 right-20 w-64 h-64 bg-yellow-300/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
           {/* Animated Heading */}
-          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 animate-fade-in">
-            <span className="inline-block hover:scale-110 transition-transform">100</span>
+          <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 animate-fade-in tracking-tight">
+            <span className="inline-block text-6xl md:text-8xl hover:scale-110 transition-transform drop-shadow-lg">100</span>
             {' '}
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-yellow-300 to-pink-300">
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-yellow-300 to-pink-300 drop-shadow-sm">
               Dev Projects
             </span>
           </h1>
@@ -98,26 +106,35 @@ const Home = () => {
             </svg>
           </div>
         </div>
+
+        {/* Wave Divider */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto block">
+            <path d="M0 60L1440 60L1440 0C1440 0 1080 40 720 40C360 40 0 0 0 0L0 60Z" fill="white"/>
+          </svg>
+        </div>
       </section>
 
       {/* Statistics Section */}
-      <section className="bg-white py-12 shadow-md">
+      <section className="relative bg-white py-16 -mt-1">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">{projects.length}+</div>
+          {/* Decorative accent line */}
+          <div className="w-24 h-1 bg-linear-to-r from-blue-600 to-purple-600 mx-auto mb-10 rounded-full"></div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            <div className="p-6 rounded-xl hover:bg-blue-50/50 transition-colors duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">{projects.length}+</div>
               <p className="text-gray-600 font-medium">Projects Available</p>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">10+</div>
+            <div className="p-6 rounded-xl hover:bg-purple-50/50 transition-colors duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">10+</div>
               <p className="text-gray-600 font-medium">Technologies</p>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-green-600 mb-2">100%</div>
+            <div className="p-6 rounded-xl hover:bg-green-50/50 transition-colors duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">100%</div>
               <p className="text-gray-600 font-medium">Free Forever</p>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-pink-600 mb-2">∞</div>
+            <div className="p-6 rounded-xl hover:bg-pink-50/50 transition-colors duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-pink-600 mb-2">&infin;</div>
               <p className="text-gray-600 font-medium">Learning Opportunities</p>
             </div>
           </div>
@@ -125,138 +142,172 @@ const Home = () => {
       </section>
 
       {/* Featured Projects Section */}
-      {selectedCategory === 'All' && selectedDifficulty === 'All' && !searchTerm && featuredProjects.length > 0 && (
-        <section className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-              <span>⭐</span>
-              Featured Projects
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map(project => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+      {!filtersActive && featuredProjects.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+                  <span>⭐</span>
+                  Featured Projects
+                </h2>
+                <div className="w-16 h-1 bg-yellow-400 mt-3 rounded-full"></div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredProjects.map(project => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
           </div>
         </section>
       )}
 
       {/* Trending Projects Section */}
-      {selectedCategory === 'All' && selectedDifficulty === 'All' && !searchTerm && trendingProjects.length > 0 && (
-        <section className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-              <span>🔥</span>
-              Trending Now
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {trendingProjects.map(project => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+      {!filtersActive && trendingProjects.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+                  <span>🔥</span>
+                  Trending Now
+                </h2>
+                <div className="w-16 h-1 bg-pink-500 mt-3 rounded-full"></div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {trendingProjects.map(project => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
           </div>
         </section>
       )}
 
       {/* Featured Blog Posts Section */}
-      {selectedCategory === 'All' && selectedDifficulty === 'All' && !searchTerm && featuredBlogs.length > 0 && (
-        <section className="container mx-auto px-4 py-12 bg-linear-to-br from-purple-50 to-blue-50 rounded-2xl my-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-              <span>📚</span>
-              Latest Tutorials & Guides
-            </h2>
-            <Link
-              to="/blog"
-              className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 group"
-            >
-              View All
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredBlogs.map(blog => (
-              <BlogCard key={blog.id} blog={blog} />
-            ))}
+      {!filtersActive && featuredBlogs.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="bg-linear-to-br from-purple-50 to-blue-50 rounded-2xl p-8 md:p-12">
+              <div className="flex items-center justify-between mb-10">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
+                    <span>📚</span>
+                    Latest Tutorials & Guides
+                  </h2>
+                  <div className="w-16 h-1 bg-purple-500 mt-3 rounded-full"></div>
+                </div>
+                <Link
+                  to="/blog"
+                  className="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1 group"
+                >
+                  View All
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {featuredBlogs.map(blog => (
+                  <BlogCard key={blog.id} blog={blog} />
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Filters Section */}
-      <section className="container mx-auto px-4 py-8" id="projects">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">
-            {searchTerm || selectedCategory !== 'All' || selectedDifficulty !== 'All'
-              ? 'Search & Filter Projects'
-              : 'Browse All Projects'}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Search */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Search Projects
-              </label>
-              <input
-                type="text"
-                placeholder="Search by name, tech, or tags..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
+      {/* Filters & Browse Section */}
+      <section className="py-16 bg-white" id="projects">
+        <div className="container mx-auto px-4">
+          {/* Filter Card */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+            {/* Gradient accent bar */}
+            <div className="h-1 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600"></div>
+            <div className="p-6 md:p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">
+                {filtersActive ? 'Search & Filter Projects' : 'Browse All Projects'}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Search */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Search Projects
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Search by name, tech, or tags..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 hover:bg-white transition-colors"
+                  />
+                </div>
 
-            {/* Category Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Category
-              </label>
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-            </div>
+                {/* Category Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Category
+                  </label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 hover:bg-white transition-colors"
+                  >
+                    {categories.map(category => (
+                      <option key={category} value={category}>{category}</option>
+                    ))}
+                  </select>
+                </div>
 
-            {/* Difficulty Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Difficulty
-              </label>
-              <select
-                value={selectedDifficulty}
-                onChange={(e) => setSelectedDifficulty(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {difficultyLevels.map(level => (
-                  <option key={level} value={level}>{level}</option>
-                ))}
-              </select>
+                {/* Difficulty Filter */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Difficulty
+                  </label>
+                  <select
+                    value={selectedDifficulty}
+                    onChange={(e) => setSelectedDifficulty(e.target.value)}
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 hover:bg-white transition-colors"
+                  >
+                    {difficultyLevels.map(level => (
+                      <option key={level} value={level}>{level}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="mt-4 text-sm text-gray-600">
+                Showing {filteredProjects.length} of {projects.length} projects
+              </div>
             </div>
           </div>
 
-          <div className="mt-4 text-sm text-gray-600">
-            Showing {filteredProjects.length} of {projects.length} projects
+          {/* Filters Active Notice */}
+          {filtersActive && (
+            <div className="flex items-center gap-2 mb-8 px-4 py-3 bg-blue-50 border border-blue-100 rounded-lg text-blue-700 text-sm">
+              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>
+                Filters active. <button onClick={clearFilters} className="font-semibold underline hover:text-blue-900">Clear all filters</button> to see Featured, Trending, and Blog sections.
+              </span>
+            </div>
+          )}
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
           </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-xl text-gray-600">No projects found. Try adjusting your filters.</p>
+            </div>
+          )}
         </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-600">No projects found. Try adjusting your filters.</p>
-          </div>
-        )}
       </section>
     </div>
   );

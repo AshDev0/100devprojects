@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
@@ -39,12 +40,12 @@ function CookieConsent() {
             🍪 We use cookies to improve your experience and analyze site traffic.
             By clicking "Accept", you consent to our use of cookies for analytics and advertising.
             Learn more in our{' '}
-            <a
-              href="/privacy-policy"
+            <Link
+              to="/privacy-policy"
               className="text-blue-400 hover:text-blue-300 underline"
             >
               Privacy Policy
-            </a>.
+            </Link>.
           </p>
         </div>
 

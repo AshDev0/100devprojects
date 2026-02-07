@@ -795,6 +795,293 @@ answer review, high score leaderboard, and social sharing - making it a complete
     status: "active",
     featured: true,
     trending: true
+  },
+
+  // ============================================
+  // PROJECT 10: CALCULATOR
+  // ============================================
+  {
+    id: 10,
+    title: "Calculator with Scientific Mode",
+    slug: "calculator",
+    shortTitle: "Calculator",
+    category: "JavaScript",
+    difficulty: "Beginner",
+
+    meta: {
+      title: "Calculator JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a beautiful calculator using Vanilla JavaScript with basic and scientific modes, keyboard support, and calculation history.",
+      keywords: [
+        "calculator javascript",
+        "javascript calculator project",
+        "scientific calculator javascript",
+        "beginner javascript project",
+        "calculator app javascript",
+        "vanilla javascript calculator"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/calculator/index.html"
+    },
+
+    description:
+      "A beautiful calculator with basic and scientific modes, keyboard support, calculation history, and localStorage persistence.",
+
+    longDescription: `
+This Calculator is a beginner-friendly JavaScript project that covers fundamental
+programming concepts like event handling, state management, and DOM manipulation.
+
+Features include basic arithmetic operations, scientific functions (sin, cos, tan, log, etc.),
+keyboard input support, calculation history with localStorage, and a clean responsive UI.
+
+Perfect for learning JavaScript basics while building a practical, portfolio-worthy project.
+    `,
+
+    features: [
+      "Basic arithmetic operations (+, -, ×, ÷)",
+      "Scientific mode (sin, cos, tan, log, ln, √, x², x³, xʸ, n!)",
+      "Percentage calculation",
+      "Sign toggle (+/-)",
+      "Keyboard input support",
+      "Calculation history with localStorage",
+      "Click history to reuse values",
+      "Error handling (division by zero, etc.)",
+      "Responsive design",
+      "Clean modern UI"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "LocalStorage API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Event handling (click and keyboard)",
+      "State management with variables",
+      "DOM manipulation",
+      "Math operations in JavaScript",
+      "LocalStorage for persistence",
+      "Conditional logic",
+      "Function organization",
+      "CSS Grid layout",
+      "Responsive design"
+    ],
+
+    demoUrl: "/demos/calculator/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/calculator",
+
+    thumbnail: "/images/projects/calculator.webp",
+
+    dateAdded: "2026-01-17",
+    estimatedTime: "2–3 hours",
+    tags: [
+      "calculator",
+      "math",
+      "javascript",
+      "beginner",
+      "keyboard",
+      "scientific",
+      "portfolio-project"
+    ],
+    status: "active",
+    featured: true,
+    trending: true
+  },
+
+  // ============================================
+  // PROJECT 11: ADVANCE NOTES APP
+  // ============================================
+  {
+    id: 11,
+    title: "Advanced Notes App with Tags & Categories",
+    slug: "advance-notes-app",
+    shortTitle: "Notes App",
+    category: "JavaScript",
+    difficulty: "Intermediate",
+
+    meta: {
+      title: "Advanced Notes App JavaScript Project | 100 Dev Projects",
+      description:
+        "Build an advanced Notes App using Vanilla JavaScript with categories, tags, color customization, pinning, search, and sorting functionality.",
+      keywords: [
+        "notes app javascript",
+        "advanced notes app",
+        "javascript notes project",
+        "note taking app javascript",
+        "intermediate javascript project",
+        "vanilla javascript project"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/advance-notes-app/index.html"
+    },
+
+    description:
+      "A feature-rich note-taking app with categories, tags, color customization, pinning, search, and sorting — built with Vanilla JavaScript.",
+
+    longDescription: `
+This Advanced Notes App is an intermediate-level JavaScript project that demonstrates
+CRUD operations, filtering, sorting, and dynamic UI rendering.
+
+Users can create notes with custom colors, assign categories (Personal, Work, Idea),
+add tags, pin important notes, and search/sort through their collection.
+
+Features include modal dialogs, toast notifications, and a clean responsive interface
+— making it a great portfolio project.
+    `,
+
+    features: [
+      "Create, edit, and delete notes",
+      "Category filtering (Personal, Work, Idea)",
+      "Tag system for organization",
+      "Color customization for notes",
+      "Pin important notes to top",
+      "Search functionality",
+      "Sort by date or title",
+      "Modal dialogs for add/edit",
+      "Toast notifications",
+      "Responsive design"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "CRUD operations in JavaScript",
+      "Dynamic filtering and sorting",
+      "Modal dialog implementation",
+      "Tag-based organization",
+      "DOM manipulation",
+      "Event handling patterns",
+      "Responsive UI development"
+    ],
+
+    demoUrl: "/demos/advance-notes-app/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/advance-notes-app",
+
+    thumbnail: "/images/projects/advance-notes-app.webp",
+
+    dateAdded: "2026-02-07",
+    estimatedTime: "4–5 hours",
+    tags: [
+      "notes",
+      "app",
+      "javascript",
+      "intermediate",
+      "crud",
+      "tags",
+      "categories",
+      "portfolio-project"
+    ],
+    status: "active",
+    featured: false,
+    trending: false
+  },
+
+  // ============================================
+  // PROJECT 12: EXPENSE TRACKER
+  // ============================================
+  {
+    id: 12,
+    title: "Expense Tracker with Charts & Reports",
+    slug: "expense-tracker",
+    shortTitle: "Expense Tracker",
+    category: "JavaScript",
+    difficulty: "Intermediate",
+
+    meta: {
+      title: "Expense Tracker JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a comprehensive Expense Tracker using Vanilla JavaScript with income/expense tracking, charts, filtering, CSV export, and dark mode.",
+      keywords: [
+        "expense tracker javascript",
+        "budget tracker javascript",
+        "finance app javascript",
+        "chart.js project",
+        "intermediate javascript project",
+        "expense manager javascript"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/expense-tracker/index.html"
+    },
+
+    description:
+      "A comprehensive personal finance app for tracking income and expenses with charts, category filtering, CSV export, print reports, and dark mode.",
+
+    longDescription: `
+This Expense Tracker is an intermediate-to-advanced JavaScript project that demonstrates
+working with data visualization, financial calculations, and data export.
+
+Users can add income and expense transactions with categories, view a financial summary
+dashboard, filter transactions by type/category/date, visualize data with pie and bar charts,
+export to CSV, and print reports.
+
+Features include dark/light theme toggle, edit/delete modals, toast notifications,
+and full accessibility — making it a production-ready portfolio project.
+    `,
+
+    features: [
+      "Income and expense tracking",
+      "Multiple categories for transactions",
+      "Financial summary dashboard",
+      "Pie and bar chart visualization",
+      "Transaction filtering (type, category, date)",
+      "Edit and delete with confirmation modals",
+      "CSV export functionality",
+      "Print reports",
+      "Dark/Light theme toggle",
+      "Toast notifications",
+      "Responsive and accessible design"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "Chart.js",
+      "LocalStorage API",
+      "Font Awesome"
+    ],
+
+    learningOutcomes: [
+      "Financial calculation logic",
+      "Data visualization with Chart.js",
+      "CSV file generation and export",
+      "Print functionality",
+      "Advanced filtering and sorting",
+      "Dark mode implementation",
+      "LocalStorage for persistence",
+      "Modal dialogs and confirmations",
+      "Accessible UI patterns"
+    ],
+
+    demoUrl: "/demos/expense-tracker/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/expense-tracker",
+
+    thumbnail: "/images/projects/expense-tracker-app.webp",
+
+    dateAdded: "2026-02-07",
+    estimatedTime: "6–8 hours",
+    tags: [
+      "expense",
+      "tracker",
+      "finance",
+      "charts",
+      "javascript",
+      "intermediate",
+      "csv-export",
+      "dark-mode",
+      "portfolio-project"
+    ],
+    status: "active",
+    featured: false,
+    trending: false
   }
 ];
 

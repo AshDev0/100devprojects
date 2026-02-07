@@ -4,7 +4,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="group relative h-full">
       {/* Main Card */}
-      <div className="relative bg-white rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] h-full flex flex-col">
+      <div className="relative bg-white rounded-xl shadow-md hover:shadow-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:scale-[1.01] h-full flex flex-col border border-gray-100">
         {/* Shine Effect Overlay */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10">
           <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12"></div>

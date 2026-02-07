@@ -1,0 +1,448 @@
+/* ============================================
+   CALCULATOR - CSS STYLES
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary-color: #8b5cf6;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --border-color: #334155;
+    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-full: 50%;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header h1 i {
+    color: var(--primary-color);
+}
+
+.header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Calculator */
+.calculator {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+/* Mode Toggle */
+.mode-toggle {
+    display: flex;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: 4px;
+    margin-bottom: 16px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+    background: var(--primary-color);
+    color: var(--text-primary);
+}
+
+.mode-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+/* Display */
+.display {
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 16px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.previous-operand {
+    color: var(--text-muted);
+    font-size: 1rem;
+    min-height: 24px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.current-operand {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 600;
+    word-wrap: break-word;
+    word-break: break-all;
+    max-width: 100%;
+    transition: font-size 0.2s ease;
+}
+
+.current-operand.small {
+    font-size: 1.8rem;
+}
+
+.current-operand.smaller {
+    font-size: 1.4rem;
+}
+
+/* Scientific Buttons */
+.scientific-buttons {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.scientific-buttons.active {
+    display: grid;
+}
+
+/* Buttons Grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 18px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Number Buttons */
+.btn-number {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.btn-number:hover {
+    background: #475569;
+}
+
+/* Operator Buttons */
+.btn-operator {
+    background: var(--primary-color);
+    color: var(--text-primary);
+}
+
+.btn-operator:hover {
+    background: var(--primary-dark);
+}
+
+/* Clear Buttons */
+.btn-clear {
+    background: var(--danger-color);
+    color: var(--text-primary);
+}
+
+.btn-clear:hover {
+    background: #dc2626;
+}
+
+/* Equals Button */
+.btn-equals {
+    background: var(--success-color);
+    color: var(--text-primary);
+}
+
+.btn-equals:hover {
+    background: #16a34a;
+}
+
+/* Function Buttons (Scientific) */
+.btn-function {
+    background: var(--secondary-color);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    padding: 14px;
+}
+
+.btn-function:hover {
+    background: #7c3aed;
+}
+
+/* History Panel */
+.history-panel {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.history-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-header h3 i {
+    color: var(--primary-color);
+}
+
+.clear-history-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.clear-history-btn:hover {
+    color: var(--danger-color);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.history-list {
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.history-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: 2px;
+}
+
+.empty-history {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    margin: 0 -8px;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+}
+
+.history-expression {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.history-result {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Shortcuts Info */
+.shortcuts-info {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.shortcuts-info p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .fa-heart {
+    color: var(--danger-color);
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+    .container {
+        padding: 0;
+    }
+
+    .calculator {
+        border-radius: 0;
+        padding: 16px;
+    }
+
+    .btn {
+        padding: 16px;
+        font-size: 1.1rem;
+    }
+
+    .current-operand {
+        font-size: 2rem;
+    }
+
+    .scientific-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .btn-function {
+        font-size: 0.8rem;
+        padding: 12px;
+    }
+}
+
+/* Animation */
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.btn.pressed {
+    animation: buttonPress 0.1s ease;
+}
+
+/* Error State */
+.display.error .current-operand {
+    color: var(--danger-color);
+}

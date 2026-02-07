@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="QCeZ-egdmX1eJER1oF_QrWd8EJ_WEDtWCUkUZEz4rD8" />
+  <title>Advanced Notes App | 100 Dev Projects</title>
+  <!-- Font Awesome  -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <!-- ===================== APP HEADER ===================== -->
+  <header class="app-header">
+    <div class="container">
+      <h1 class="app-title">Advanced Notes App</h1>
+      <div class="app-search-bar" role="search">
+        <i class="fas fa-search"></i>
+        <input type="search" class="search-bar" name="search-bar" id="search-bar" placeholder="Search Notes..."
+          aria-label="Search notes">
+      </div>
+      <div class="icons">
+        <span class="notification">
+          <i class="fa-regular fa-bell"></i>
+        </span>
+        <span class="user">
+          <i class="fa-regular fa-user"></i>
+        </span>
+      </div>
+    </div>
+  </header>
+  <!-- ===================== APP DASHBOARD ===================== -->
+  <main class="dashboard">
+    <div class="filtersAndSort">
+      <div class="container">
+        <div class="filters">
+          <ul class="tabs">
+            <li class="tab active">All</li>
+            <li class="tab">Personal</li>
+            <li class="tab">Work</li>
+            <li class="tab">Idea</li>
+          </ul>
+        </div>
+        <div class="sort">
+          <select id="sorting" aria-label="Sort notes">
+            <option value="date-newest">Newest First</option>
+            <option value="date-oldest">Oldest First</option>
+            <option value="title-asc">Title (A-Z)</option>
+            <option value="title-desc">Title (Z-A)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="notes-grid">
+        
+      </div>
+
+      <!-- ===================== EMPTY STATE ===================== -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-illustration" aria-hidden="true">
+          <i class="fa-regular fa-note-sticky"></i>
+        </div>
+        <h3>No notes yet</h3>
+        <p>Create your first note to get started.</p>
+        <button type="button" class="btn-primary" id="emptyStateCta">Create Note</button>
+      </div>
+    </div>
+  </main>
+  <!-- ===================== APP FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <p>
+        Made with <span aria-label="coffee">&#9749;</span> and JavaScript |
+        <a href="https://100devprojects.in" target="_blank" rel="noopener noreferrer">
+          100 Dev Projects
+        </a>
+      </p>
+    </div>
+  </footer>
+  <!-- ===================== ADD NOTE BUTTON ===================== -->
+  <div class="add-note-btn">
+    <button type="button" id="addNoteBtn">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  <!-- ===================== ADD MODAL ===================== -->
+  <div id="addModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="addModalTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Create New Notes</h2>
+        <button class="modal-close" type="button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="addNotes" class="modal-form">
+        <div class="form-group">
+          <label for="addTitle">Title:</label>
+          <input type="text" name="title" id="addTitle" />
+        </div>
+        <div class="form-group">
+          <label for="addContent">Content:</label>
+          <textarea name="content" id="addContent"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="addTags">Tags:</label>
+          <input type="text" name="tags" id="addTags" />
+        </div>
+        <div class="form-group">
+          <label for="addColor">Color:</label>
+          <input type="color" name="color" id="addColor" />
+        </div>
+        <div class="form-group">
+          <label for="addPin">Pin:</label>
+          <input type="checkbox" name="pin" id="addPin" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelAdd">Cancel</button>
+          <button type="button" class="btn-primary" id="saveAdd">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== EDIT MODAL ===================== -->
+  <div id="editModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Notes</h2>
+        <button class="modal-close" type="button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="editNotes" class="modal-form">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="editTitle" />
+        </div>
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <textarea name="content" id="editContent"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags:</label>
+          <input type="text" name="tags" id="editTags" />
+        </div>
+        <div class="form-group">
+          <label for="color">Color:</label>
+          <input type="color" name="color" id="editColor" />
+        </div>
+        <div class="form-group">
+          <label for="pin">Pin:</label>
+          <input type="checkbox" name="pin" id="editPin" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelEdit">Cancel</button>
+          <button type="button" class="btn-primary" id="saveEdit">Save</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ===================== TOAST NOTIFICATION ===================== -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+    <i class="toast-icon fas" aria-hidden="true"></i>
+    <span id="toastMessage">Message here</span>
+    <button type="button" class="toast-close" aria-label="Close notification">
+      <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
