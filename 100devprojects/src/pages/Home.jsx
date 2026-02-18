@@ -5,6 +5,7 @@ import BlogCard from '../components/BlogCard';
 import { projects, categories, difficultyLevels } from '../data/projects';
 import { getFeaturedBlogs } from '../data/blogs/index';
 import { useSEO } from '../hooks/useSEO';
+import { useSchema } from '../hooks/useSchema';
 
 const Home = () => {
   useSEO({
@@ -14,6 +15,38 @@ const Home = () => {
     ogImage: 'https://100devprojects.in/og-default.jpg',
     canonicalUrl: 'https://100devprojects.in'
   });
+
+  useSchema([
+    {
+      "@type": "WebSite",
+      "name": "100 Dev Projects",
+      "url": "https://100devprojects.in",
+      "description": "Master JavaScript, React, and web development by building 100+ real-world projects with step-by-step tutorials.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://100devprojects.in/?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "100 Dev Projects",
+      "url": "https://100devprojects.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://100devprojects.in/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://github.com/AshDev0/100devprojects"
+      ],
+      "description": "A platform for learning web development by building 100+ real-world JavaScript and React projects."
+    }
+  ]);
 
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');

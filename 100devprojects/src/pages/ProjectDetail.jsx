@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
+import { useMemo } from 'react';
 import { getProjectBySlug } from '../data/projects.js';
 import { useSEO } from '../hooks/useSEO';
+import { useSchema } from '../hooks/useSchema';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -16,6 +18,41 @@ const ProjectDetail = () => {
       : 'https://100devprojects.in/og-default.jpg',
     canonicalUrl: project?.meta?.canonicalUrl || 'https://100devprojects.in'
   });
+
+  const schemas = useMemo(() => {
+    if (!project) return null;
+    const projectUrl = `https://100devprojects.in/project/${project.slug}`;
+    return [
+      {
+        "@type": "LearningResource",
+        "name": project.title,
+        "description": project.description,
+        "url": projectUrl,
+        "educationalLevel": project.difficulty,
+        "learningResourceType": "Project",
+        "teaches": project.learningOutcomes,
+        "timeRequired": project.estimatedTime,
+        "keywords": project.tags.join(', '),
+        "inLanguage": "en",
+        "dateCreated": project.dateAdded,
+        "author": {
+          "@type": "Organization",
+          "name": "100 Dev Projects",
+          "url": "https://100devprojects.in"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://100devprojects.in" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://100devprojects.in/projects" },
+          { "@type": "ListItem", "position": 3, "name": project.shortTitle, "item": projectUrl }
+        ]
+      }
+    ];
+  }, [project]);
+
+  useSchema(schemas);
 
   if (!project) {
     return (

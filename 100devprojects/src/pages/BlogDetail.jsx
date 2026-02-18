@@ -1,10 +1,22 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { getBlogBySlug, getRelatedBlogs } from '../data/blogs/index';
 import { projects } from '../data/projects';
 import { useSEO } from '../hooks/useSEO';
+import { useSchema } from '../hooks/useSchema';
 import BlogCard from '../components/BlogCard';
 import MarkdownContent from '../components/MarkdownContent';
+
+const PUBLISHER = {
+  "@type": "Organization",
+  "name": "100 Dev Projects",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://100devprojects.in/android-chrome-512x512.png",
+    "width": 512,
+    "height": 512
+  }
+};
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -17,49 +29,69 @@ const BlogDetail = () => {
     canonicalUrl: blog?.meta?.canonicalUrl || 'https://100devprojects.in/blog'
   });
 
-  // Add Schema.org Article structured data
-  useEffect(() => {
-    if (!blog) return;
+  // Build schemas with useMemo so useSchema dependency is stable
+  const schemas = useMemo(() => {
+    if (!blog) return null;
 
-    const schemaData = {
-      "@context": "https://schema.org",
+    const articleSchema = {
       "@type": "Article",
       "headline": blog.title,
       "description": blog.excerpt,
-      "image": `https://100devprojects.in/og-image.png`,
+      "url": blog.meta.canonicalUrl,
+      "image": "https://100devprojects.in/android-chrome-512x512.png",
       "datePublished": blog.datePublished,
       "dateModified": blog.datePublished,
       "author": {
         "@type": "Person",
         "name": blog.author,
-        "url": "https://100devprojects.in"
+        "url": "https://100devprojects.in/about"
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "100 Dev Projects",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://100devprojects.in/logo.png"
-        }
-      },
+      "publisher": PUBLISHER,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": blog.meta.canonicalUrl
       },
       "keywords": blog.meta.keywords.join(', '),
       "articleSection": blog.category,
-      "wordCount": blog.content.split(' ').length
+      "wordCount": blog.content.trim().split(/\s+/).length,
+      "timeRequired": blog.readTime
     };
 
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(schemaData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
+    const breadcrumbSchema = {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://100devprojects.in" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://100devprojects.in/blog" },
+        { "@type": "ListItem", "position": 3, "name": blog.title, "item": blog.meta.canonicalUrl }
+      ]
     };
+
+    const result = [articleSchema, breadcrumbSchema];
+
+    // FAQPage schema — only for blogs that contain Q&A format (e.g. interview questions)
+    if (blog.tags?.includes('interview-questions') || blog.tags?.includes('interview')) {
+      const faqMatches = [...blog.content.matchAll(/###\s+(?:\d+\.\s+)?(.+?)\n([\s\S]+?)(?=\n###|\n---|\n$)/g)];
+      const faqItems = faqMatches
+        .filter(m => m[2].trim().length > 20)
+        .slice(0, 20)
+        .map(m => ({
+          "@type": "Question",
+          "name": m[1].replace(/[`*]/g, '').trim(),
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": m[2].replace(/```[\s\S]*?```/g, '').replace(/[`*#]/g, '').trim().slice(0, 500)
+          }
+        }));
+
+      if (faqItems.length > 0) {
+        result.push({ "@type": "FAQPage", "mainEntity": faqItems });
+      }
+    }
+
+    return result;
   }, [blog]);
+
+  useSchema(schemas);
 
   if (!blog) {
     return (
