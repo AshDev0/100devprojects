@@ -5,6 +5,8 @@
 // Hybrid approach: Old blogs still work, new blogs use modular structure
 
 // New modular blogs
+import { weatherAppBlog } from './weather-app-fetch-api';
+import { bmiCalculatorBlog } from './bmi-calculator';
 import { asyncJavaScriptBlog } from './async-javascript';
 import { asyncJavaScriptHindiBlog } from './async-javascript-hindi';
 import { localStorageHindiBlog } from './localstorage-hindi';
@@ -20,12 +22,14 @@ import { blogs as oldBlogs } from '../blogs';
 // Combines new modular blogs with old structure
 // Old blogs are filtered to exclude already migrated ones
 export const blogs = [
+  weatherAppBlog,             // ID 11 - Weather App + Fetch API Tutorial
   domManipulationHindiBlog,  // ID 10 - DOM Manipulation Hindi Tutorial
   javascriptBasicsHindiBlog,  // ID 9 - JavaScript Basics Hindi Tutorial
-  localStorageHindiBlog,  // ID 8 - LocalStorage Complete Guide Hindi
-  asyncJavaScriptHindiBlog,  // ID 7 - Async JavaScript Hindi Tutorial
-  asyncJavaScriptBlog,  // ID 6 - Migrated to modular structure
-  ...oldBlogs.filter(blog => blog.id !== 6)  // IDs 1-5 - Still in old structure
+  localStorageHindiBlog,      // ID 8 - LocalStorage Complete Guide Hindi
+  asyncJavaScriptHindiBlog,   // ID 7 - Async JavaScript Hindi Tutorial
+  asyncJavaScriptBlog,        // ID 6 - Migrated to modular structure
+  bmiCalculatorBlog,          // ID 1 - Migrated to modular structure
+  ...oldBlogs.filter(blog => ![6, 1].includes(blog.id))  // IDs 2-5 - Still in old structure
 ];
 
 // Future: As you migrate blogs, add them here and filter from oldBlogs
