@@ -1,0 +1,519 @@
+:root {
+    --color-work: #e74c3c;
+    --color-break: #27ae60;
+    --color-long-break: #8e44ad;
+    --color-gray: #95a5a6;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.timer {
+    font-size: 60px;
+    font-weight: bold;
+    color: var(--color-work);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions button {
+    background-color: var(--color-work);
+    padding: 15px 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.actions button:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.actions button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.mode {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-work);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.session {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.keyboard-hint {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #bdc3c7;
+    letter-spacing: 0.5px;
+}
+
+.mute-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 2px solid var(--color-gray);
+    color: var(--color-gray);
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.mute-btn:hover {
+    background: #ecf0f1;
+}
+
+.mute-btn:focus-visible {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+.mute-btn.muted {
+    color: var(--color-work);
+    border-color: var(--color-work);
+}
+
+.timer-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 30px auto;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    transition: stroke-dashoffset 1s linear;
+    stroke-linecap: round;
+}
+
+#pauseButton {
+    background-color: #f39c12;
+}
+
+#pauseButton:hover:not(:disabled) {
+    background-color: #e67e22;
+}
+
+#resetButton {
+    background-color: var(--color-gray);
+}
+
+#resetButton:hover:not(:disabled) {
+    background-color: #7f8c8d;
+}
+
+/* Focus visible for keyboard navigation */
+.actions button:focus-visible,
+.settings-btn:focus-visible {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Mode Color Classes */
+.mode-work .mode,
+.mode-work .timer {
+    color: var(--color-work);
+}
+
+.mode-work .progress-ring-circle {
+    stroke: var(--color-work);
+}
+
+.mode-break .mode,
+.mode-break .timer {
+    color: var(--color-break);
+}
+
+.mode-break .progress-ring-circle {
+    stroke: var(--color-break);
+}
+
+.mode-long-break .mode,
+.mode-long-break .timer {
+    color: var(--color-long-break);
+}
+
+.mode-long-break .progress-ring-circle {
+    stroke: var(--color-long-break);
+}
+
+/* Settings Button */
+.settings-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: 2px solid var(--color-gray);
+    color: var(--color-gray);
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.settings-btn:hover {
+    background: #ecf0f1;
+    transform: rotate(90deg);
+}
+
+/* Settings Panel */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.3s;
+}
+
+.settings-panel.hidden {
+    display: none;
+}
+
+.settings-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.settings-content h2 {
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.setting-group {
+    margin-bottom: 20px;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34495e;
+    font-weight: 600;
+}
+
+.setting-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.setting-group input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.settings-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.settings-buttons button {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.settings-buttons button:focus-visible {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background: var(--color-break);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #229954;
+}
+
+.btn-secondary {
+    background: var(--color-gray);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 14px 24px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+    max-width: 320px;
+}
+
+.toast-success {
+    background: var(--color-break);
+}
+
+.toast-error {
+    background: var(--color-work);
+}
+
+.toast-info {
+    background: #3498db;
+}
+
+@keyframes toastIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 520px) {
+    .container {
+        padding: 40px 20px 30px;
+        border-radius: 15px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .timer-container {
+        width: 240px;
+        height: 240px;
+        margin: 20px auto;
+    }
+
+    .timer {
+        font-size: 48px;
+    }
+
+    .mode {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .session {
+        font-size: 16px;
+    }
+
+    .actions button {
+        padding: 12px 28px;
+        font-size: 14px;
+    }
+
+    .mute-btn {
+        top: 12px;
+        right: 12px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .settings-btn {
+        top: 12px;
+        left: 12px;
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .keyboard-hint {
+        display: none;
+    }
+
+    .toast {
+        max-width: 260px;
+        font-size: 13px;
+        padding: 12px 18px;
+    }
+
+    .toast-container {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding: 35px 15px 25px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .timer-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .timer {
+        font-size: 40px;
+    }
+
+    .mode {
+        font-size: 18px;
+    }
+
+    .actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .actions button {
+        padding: 10px 24px;
+    }
+
+    .settings-content {
+        padding: 25px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .progress-ring-circle {
+        transition: none;
+    }
+
+    .toast {
+        animation: none;
+    }
+
+    .settings-btn {
+        transition: none;
+    }
+
+    .settings-btn:hover {
+        transform: none;
+    }
+
+    .actions button {
+        transition: none;
+    }
+}

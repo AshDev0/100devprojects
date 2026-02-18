@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="QCeZ-egdmX1eJER1oF_QrWd8EJ_WEDtWCUkUZEz4rD8"
+    />
+    <title>Pomodoro Timer | 100 Dev Projects</title>
+
+    <!-- SEO -->
+    <meta name="description" content="A clean Pomodoro Timer to boost your productivity. Work in focused 25-minute sessions with short and long breaks. Built with HTML, CSS and JavaScript." />
+    <meta name="keywords" content="pomodoro timer, productivity timer, javascript timer, HTML CSS JS project, 100 dev projects, focus timer" />
+    <meta name="author" content="100 Dev Projects" />
+    <link rel="canonical" href="https://100devprojects.in/demos/pomodoro-timer/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://100devprojects.in/demos/pomodoro-timer/" />
+    <meta property="og:title" content="Pomodoro Timer | 100 Dev Projects" />
+    <meta property="og:description" content="A clean Pomodoro Timer to boost your productivity. Work in focused 25-minute sessions with short and long breaks. Built with HTML, CSS and JavaScript." />
+    <meta property="og:image" content="https://100devprojects.in/android-chrome-512x512.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pomodoro Timer | 100 Dev Projects" />
+    <meta name="twitter:description" content="A clean Pomodoro Timer to boost your productivity. Work in focused 25-minute sessions with short and long breaks. Built with HTML, CSS and JavaScript." />
+    <meta name="twitter:image" content="https://100devprojects.in/android-chrome-512x512.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main id="pomodoroTimerApp">
+      <div class="container mode-work">
+        <h1>Pomodoro Timer</h1>
+        <button id="muteBtn" class="mute-btn" aria-label="Toggle sound on or off">🔊 Sound On</button>
+        <button id="settingsBtn" class="settings-btn" aria-label="Open timer settings">⚙️</button>
+        <div class="session" id="session" aria-live="polite">Session 1 of 4</div>
+        <div class="mode" id="mode" aria-live="polite">WORK MODE</div>
+        <div class="timer-container">
+          <svg class="progress-ring" viewBox="0 0 300 300">
+            <circle
+              class="progress-ring-circle-bg"
+              stroke="#ecf0f1"
+              stroke-width="12"
+              fill="transparent"
+              r="140"
+              cx="150"
+              cy="150"
+            />
+            <circle
+              class="progress-ring-circle"
+              id="progressCircle"
+              stroke="#e74c3c"
+              stroke-width="12"
+              fill="transparent"
+              r="140"
+              cx="150"
+              cy="150"
+            />
+          </svg>
+          <div class="timer" id="timerDisplay" role="timer" aria-label="Time remaining">25:00</div>
+        </div>
+        <div class="actions">
+          <button id="startButton" aria-label="Start timer">Start</button>
+          <button id="pauseButton" aria-label="Pause timer">Pause</button>
+          <button id="resetButton" aria-label="Reset timer">Reset</button>
+        </div>
+        <p class="keyboard-hint" aria-hidden="true">Space = Start/Pause &middot; Esc = Close Settings</p>
+      </div>
+      <!-- Setting Panel -->
+      <div class="settings-panel hidden" id="settingsPanel" role="dialog" aria-modal="true" aria-label="Timer Settings">
+        <div class="settings-content">
+          <h2>⚙️ Timer Settings</h2>
+          <div class="setting-group">
+            <label for="workInput">Work Duration (minutes):</label>
+            <input type="number" id="workInput" min="1" max="60" value="25">
+          </div>
+          <div class="setting-group">
+            <label for="breakInput">Break Duration (minutes):</label>
+            <input type="number" id="breakInput" min="1" max="30" value="5">
+          </div>
+          <div class="setting-group">
+            <label for="longBreakInput">Long Break Duration (minutes):</label>
+            <input type="number" id="longBreakInput" min="5" max="60" value="15">
+          </div>
+          <div class="settings-buttons">
+            <button id="saveSettings" class="btn-primary">Save</button>
+            <button id="cancelSettings" class="btn-secondary">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <!-- Toast Container -->
+      <div id="toastContainer" class="toast-container" aria-live="assertive" role="status"></div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

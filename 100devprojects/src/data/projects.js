@@ -1082,6 +1082,208 @@ and full accessibility — making it a production-ready portfolio project.
     status: "active",
     featured: false,
     trending: false
+  },
+
+  // ============================================
+  // PROJECT 13: ANALOG CLOCK
+  // ============================================
+  {
+    id: 13,
+    title: "Analog Clock (Space Theme)",
+    slug: "analog-clock",
+    shortTitle: "Analog Clock",
+    category: "JavaScript",
+    difficulty: "Beginner",
+
+    meta: {
+      title: "Analog Clock JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a beautiful space-themed analog clock using HTML, CSS and JavaScript. Learn SVG manipulation, Date API, requestAnimationFrame, and smooth hand animations.",
+      keywords: [
+        "analog clock javascript",
+        "SVG clock javascript",
+        "javascript date api",
+        "requestAnimationFrame",
+        "beginner javascript project",
+        "html css js clock"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/analog-clock/index.html"
+    },
+
+    description:
+      "A beautiful space-themed analog clock with SVG hands, smooth animations, mouse parallax effect, digital time/date/day display, and twinkling star background.",
+
+    longDescription: `
+This Analog Clock is a beginner-to-intermediate JavaScript project that teaches
+core DOM manipulation, SVG creation, and animation techniques.
+
+The clock features smooth second-hand movement using milliseconds for sub-second
+precision, a 3D mouse parallax tilt effect using lerp interpolation, dynamically
+generated tick marks and hour numbers via SVG, and a full-screen space-themed
+background with animated stars and nebula effects.
+
+Features include a digital display bar showing current time, date, and day,
+a date complication replacing the 3 o'clock numeral, and full accessibility
+with aria labels and reduced-motion support.
+    `,
+
+    features: [
+      "SVG-based analog clock face",
+      "Smooth sub-second hand movement",
+      "3D mouse parallax tilt effect",
+      "Dynamically generated tick marks and numbers",
+      "Digital display (time, date, day)",
+      "Date complication at 3 o'clock",
+      "Twinkling star background (120 stars)",
+      "Animated nebula effects",
+      "Rotating glow rings",
+      "Responsive layout using clamp()",
+      "Touch support for parallax"
+    ],
+
+    techStack: [
+      "HTML5",
+      "SVG",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "requestAnimationFrame",
+      "Date API",
+      "Google Fonts (Orbitron, Rajdhani)"
+    ],
+
+    learningOutcomes: [
+      "SVG element creation and manipulation",
+      "JavaScript Date API for real-time data",
+      "requestAnimationFrame animation loop",
+      "Linear interpolation (lerp) for smooth effects",
+      "CSS custom properties and animations",
+      "Mouse and touch event handling",
+      "Accessible SVG with aria labels"
+    ],
+
+    demoUrl: "/demos/analog-clock/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/analog-clock",
+
+    thumbnail: "/images/projects/analog_clock.webp",
+
+    dateAdded: "2026-02-18",
+    estimatedTime: "3–5 hours",
+    tags: [
+      "clock",
+      "analog",
+      "svg",
+      "animation",
+      "javascript",
+      "beginner",
+      "space-theme",
+      "parallax"
+    ],
+    status: "active",
+    featured: false,
+    trending: true
+  },
+
+  // ============================================
+  // PROJECT 14: POMODORO TIMER
+  // ============================================
+  {
+    id: 14,
+    title: "Pomodoro Timer (Productivity)",
+    slug: "pomodoro-timer",
+    shortTitle: "Pomodoro Timer",
+    category: "JavaScript",
+    difficulty: "Beginner",
+
+    meta: {
+      title: "Pomodoro Timer JavaScript Project | 100 Dev Projects",
+      description:
+        "Build a Pomodoro Timer using HTML, CSS and JavaScript. Learn setInterval, Notification API, localStorage, SVG progress ring, and focus/break session management.",
+      keywords: [
+        "pomodoro timer javascript",
+        "productivity timer javascript",
+        "setInterval javascript",
+        "notification api javascript",
+        "beginner javascript project",
+        "focus timer html css js"
+      ],
+      canonicalUrl: "https://100devprojects.in/demos/pomodoro-timer/index.html"
+    },
+
+    description:
+      "A clean Pomodoro Timer with SVG progress ring, work/break/long-break sessions, sound notifications, browser notifications, customizable durations, and localStorage settings.",
+
+    longDescription: `
+This Pomodoro Timer is a beginner JavaScript project that teaches time management
+app development using core web APIs.
+
+The app implements the classic Pomodoro technique: 25-minute focused work sessions
+followed by 5-minute breaks, with a 15-minute long break after every 4 sessions.
+
+Features include a circular SVG progress ring that fills as the timer counts down,
+browser notifications when sessions complete, audio alerts with mute toggle,
+a settings panel with focus trap for accessibility, keyboard shortcuts (Space to
+start/pause, Escape to close settings), and localStorage persistence for user settings.
+    `,
+
+    features: [
+      "SVG circular progress ring",
+      "Work, short break, and long break modes",
+      "Session tracking (4 sessions per cycle)",
+      "Browser Notification API support",
+      "Audio alerts (work done, break done)",
+      "Mute toggle for sounds",
+      "Customizable durations via settings panel",
+      "Keyboard shortcuts (Space, Escape)",
+      "Focus trap in settings modal",
+      "Toast notifications for feedback",
+      "localStorage settings persistence",
+      "Responsive design"
+    ],
+
+    techStack: [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript (ES6+)",
+      "setInterval",
+      "Notification API",
+      "Web Audio API",
+      "localStorage API",
+      "SVG"
+    ],
+
+    learningOutcomes: [
+      "setInterval for countdown timer logic",
+      "SVG strokeDashoffset for progress animation",
+      "Notification API for browser alerts",
+      "Audio playback with Web Audio API",
+      "localStorage for settings persistence",
+      "Focus trap pattern for accessibility",
+      "Keyboard event handling",
+      "Modal dialog patterns"
+    ],
+
+    demoUrl: "/demos/pomodoro-timer/index.html",
+    githubUrl:
+      "https://github.com/AshDev0/100devprojects/tree/main/100devprojects/public/demos/pomodoro-timer",
+
+    thumbnail: "/images/projects/pomodoro_timer.webp",
+
+    dateAdded: "2026-02-18",
+    estimatedTime: "4–6 hours",
+    tags: [
+      "pomodoro",
+      "timer",
+      "productivity",
+      "notification",
+      "javascript",
+      "beginner",
+      "focus",
+      "localstorage"
+    ],
+    status: "active",
+    featured: false,
+    trending: true
   }
 ];
 
