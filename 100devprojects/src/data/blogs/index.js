@@ -5,6 +5,7 @@
 // Hybrid approach: Old blogs still work, new blogs use modular structure
 
 // New modular blogs
+import { javascriptInterviewBlog } from './javascript-interview-questions';
 import { weatherAppBlog } from './weather-app-fetch-api';
 import { bmiCalculatorBlog } from './bmi-calculator';
 import { asyncJavaScriptBlog } from './async-javascript';
@@ -22,6 +23,7 @@ import { blogs as oldBlogs } from '../blogs';
 // Combines new modular blogs with old structure
 // Old blogs are filtered to exclude already migrated ones
 export const blogs = [
+  javascriptInterviewBlog,    // ID 12 - JS Interview Questions 2026
   weatherAppBlog,             // ID 11 - Weather App + Fetch API Tutorial
   domManipulationHindiBlog,  // ID 10 - DOM Manipulation Hindi Tutorial
   javascriptBasicsHindiBlog,  // ID 9 - JavaScript Basics Hindi Tutorial
