@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const BlogCard = ({ blog }) => {
   return (
@@ -29,7 +29,7 @@ const BlogCard = ({ blog }) => {
         <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
           <div className="flex items-center gap-1">
             <span>📅</span>
-            <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
           </div>
           <div className="flex items-center gap-1">
             <span>⏱️</span>
@@ -69,7 +69,7 @@ const BlogCard = ({ blog }) => {
           </div>
 
           <Link
-            to={`/blog/${blog.slug}`}
+            href={`/blog/${blog.slug}`}
             className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center gap-1 group"
           >
             Read More

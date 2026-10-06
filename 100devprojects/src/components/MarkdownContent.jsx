@@ -1,3 +1,5 @@
+import CopyButton from './CopyButton';
+
 const MarkdownContent = ({ content }) => {
   // Parse markdown content into structured elements
   const parseMarkdown = (text) => {
@@ -163,12 +165,7 @@ const MarkdownContent = ({ content }) => {
               <div key={index} className="my-6 rounded-lg overflow-hidden shadow-lg">
                 <div className="bg-gray-800 px-4 py-2 flex items-center justify-between">
                   <span className="text-gray-300 text-sm font-mono">{element.lang}</span>
-                  <button
-                    onClick={() => navigator.clipboard.writeText(element.content)}
-                    className="text-gray-400 hover:text-white text-xs px-3 py-1 rounded bg-gray-700 hover:bg-gray-600 transition-colors"
-                  >
-                    Copy
-                  </button>
+                  <CopyButton text={element.content} />
                 </div>
                 <pre className="bg-gray-900 p-4 overflow-x-auto">
                   <code className="text-sm font-mono text-gray-100 leading-relaxed">
