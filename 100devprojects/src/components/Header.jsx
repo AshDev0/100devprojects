@@ -1,10 +1,13 @@
-import { Link, useLocation } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useCallback } from 'react';
 import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 
   const navLinks = [
@@ -20,7 +23,7 @@ const Header = () => {
         <nav className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 group">
+            <Link href="/" className="flex items-center space-x-2 group">
               <span className="text-2xl font-display font-bold text-blue-600 group-hover:scale-110 transition-transform">
                 100
               </span>
@@ -32,11 +35,11 @@ const Header = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
               {navLinks.map((link) => {
-                const isActive = location.pathname === link.path;
+                const isActive = pathname === link.path;
                 return (
                   <Link
                     key={link.path}
-                    to={link.path}
+                    href={link.path}
                     className={`font-medium transition-all ${
                       isActive
                         ? 'text-blue-600 border-b-2 border-blue-600'

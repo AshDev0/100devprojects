@@ -1,17 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 const MobileMenu = ({ isOpen, onClose }) => {
-  const location = useLocation();
-  const prevPathname = useRef(location.pathname);
+  const pathname = usePathname();
+  const prevPathname = useRef(pathname);
 
   // Close menu on route change only
   useEffect(() => {
-    if (prevPathname.current !== location.pathname) {
-      prevPathname.current = location.pathname;
+    if (prevPathname.current !== pathname) {
+      prevPathname.current = pathname;
       onClose();
     }
-  }, [location.pathname, onClose]);
+  }, [pathname, onClose]);
 
   // Prevent scroll when menu is open
   useEffect(() => {
@@ -68,7 +71,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
         {/* Logo in Menu */}
         <div className="pt-6 px-6 pb-2">
           <Link
-            to="/"
+            href="/"
             onClick={onClose}
             className="flex items-center space-x-1"
             tabIndex={isOpen ? 0 : -1}
@@ -90,11 +93,11 @@ const MobileMenu = ({ isOpen, onClose }) => {
               { path: '/blog', label: 'Blog', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z' },
               { path: '/about', label: 'About', icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
             ].map((item) => {
-              const isActive = location.pathname === item.path;
+              const isActive = pathname === item.path;
               return (
                 <li key={item.path}>
                   <Link
-                    to={item.path}
+                    href={item.path}
                     className={`flex items-center gap-3 py-3 px-4 rounded-lg font-medium transition-all ${
                       isActive
                         ? 'bg-blue-50 text-blue-600 border-l-4 border-blue-600'

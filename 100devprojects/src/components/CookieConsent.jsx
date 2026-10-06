@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
@@ -41,7 +43,7 @@ function CookieConsent() {
             By clicking "Accept", you consent to our use of cookies for analytics and advertising.
             Learn more in our{' '}
             <Link
-              to="/privacy-policy"
+              href="/privacy-policy"
               className="text-blue-400 hover:text-blue-300 underline"
             >
               Privacy Policy

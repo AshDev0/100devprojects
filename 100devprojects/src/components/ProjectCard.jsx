@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const ProjectCard = ({ project }) => {
   return (
@@ -111,7 +111,7 @@ const ProjectCard = ({ project }) => {
             <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-300% opacity-0 group-hover/btn:opacity-100 group-hover/btn:animate-gradient transition-opacity duration-300"></div>
           </a>
           <Link
-            to={`/project/${project.slug}`}
+            href={`/project/${project.slug}`}
             className="relative flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg overflow-hidden group/btn transition-all text-center font-medium text-sm hover:shadow-lg hover:bg-gray-300 active:scale-95"
           >
             <span className="relative z-10">Learn More</span>

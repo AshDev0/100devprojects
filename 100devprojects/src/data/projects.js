@@ -26,7 +26,7 @@ export const projects = [
         "localStorage JavaScript",
         "health calculator JS"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/bmi-calculator/index.html"
+      canonicalUrl: "https://100devprojects.in/project/bmi-calculator"
     },
 
     description:
@@ -104,7 +104,7 @@ making it perfect for a beginner portfolio.
         "dom manipulation project",
         "bill calculator js"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/tip-calculator/index.html"
+      canonicalUrl: "https://100devprojects.in/project/tip-calculator"
     },
 
     description:
@@ -176,7 +176,7 @@ basic calculations, and updating the DOM dynamically.
         "beginner javascript project",
         "tailwind css todo app"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/todo-app-basic/index.html"
+      canonicalUrl: "https://100devprojects.in/project/todo-app"
     },
 
     description:
@@ -248,7 +248,7 @@ and delete tasks with a clean Tailwind CSS interface.
         "dark mode javascript"
       ],
       canonicalUrl:
-        "https://100devprojects.in/demos/todo-app-advanced/index.html"
+        "https://100devprojects.in/project/todo-app-advanced"
     },
 
     description:
@@ -335,7 +335,7 @@ making it a strong portfolio project.
       "vanilla javascript project"
     ],
     canonicalUrl:
-      "https://100devprojects.in/demos/digital-clock/index.html"
+      "https://100devprojects.in/project/digital-clock"
   },
 
   description:
@@ -427,7 +427,7 @@ and a fully responsive UI — making it a strong portfolio-ready JavaScript proj
         "intermediate javascript project"
       ],
       canonicalUrl:
-        "https://100devprojects.in/demos/color-generator/index.html"
+        "https://100devprojects.in/project/color-generator"
     },
 
     description:
@@ -519,7 +519,7 @@ modern UI built with vanilla JavaScript and CSS.
         "javascript beginner project"
       ],
       canonicalUrl:
-        "https://100devprojects.in/demos/guess-number-game/index.html"
+        "https://100devprojects.in/project/guess-number-game"
     },
 
     description:
@@ -618,7 +618,7 @@ this project is perfect for learning JavaScript fundamentals while having fun!
         "intermediate javascript project",
         "api integration javascript"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/weather-app/index.html"
+      canonicalUrl: "https://100devprojects.in/project/weather-app"
     },
 
     description:
@@ -722,7 +722,7 @@ loading states, and localStorage persistence — making it a production-ready po
         "quiz game with timer",
         "javascript localstorage project"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/quiz-app/index.html"
+      canonicalUrl: "https://100devprojects.in/project/quiz-app"
     },
 
     description:
@@ -820,7 +820,7 @@ answer review, high score leaderboard, and social sharing - making it a complete
         "calculator app javascript",
         "vanilla javascript calculator"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/calculator/index.html"
+      canonicalUrl: "https://100devprojects.in/project/calculator"
     },
 
     description:
@@ -914,7 +914,7 @@ Perfect for learning JavaScript basics while building a practical, portfolio-wor
         "intermediate javascript project",
         "vanilla javascript project"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/advance-notes-app/index.html"
+      canonicalUrl: "https://100devprojects.in/project/advance-notes-app"
     },
 
     description:
@@ -1007,7 +1007,7 @@ Features include modal dialogs, toast notifications, and a clean responsive inte
         "intermediate javascript project",
         "expense manager javascript"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/expense-tracker/index.html"
+      canonicalUrl: "https://100devprojects.in/project/expense-tracker"
     },
 
     description:
@@ -1107,7 +1107,7 @@ and full accessibility — making it a production-ready portfolio project.
         "beginner javascript project",
         "html css js clock"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/analog-clock/index.html"
+      canonicalUrl: "https://100devprojects.in/project/analog-clock"
     },
 
     description:
@@ -1207,7 +1207,7 @@ with aria labels and reduced-motion support.
         "beginner javascript project",
         "focus timer html css js"
       ],
-      canonicalUrl: "https://100devprojects.in/demos/pomodoro-timer/index.html"
+      canonicalUrl: "https://100devprojects.in/project/pomodoro-timer"
     },
 
     description:
