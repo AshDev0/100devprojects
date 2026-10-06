@@ -3,6 +3,7 @@ import BlogDetail from '../../../views/BlogDetail';
 import JsonLd from '../../../components/JsonLd';
 import { blogs, getBlogBySlug } from '../../../data/blogs/index';
 import { buildMetadata, blogSchemas } from '../../../lib/site';
+import { isoDate } from '../../../lib/dates';
 
 export const dynamicParams = false;
 
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }) {
     keywords: blog.meta?.keywords,
     path: `/blog/${blog.slug}`,
     ogType: 'article',
-    publishedTime: blog.datePublished,
+    publishedTime: isoDate(blog.datePublished),
   });
 }
 

@@ -1,6 +1,7 @@
 import { projects } from '../data/projects';
 import { blogs } from '../data/blogs/index';
 import { SITE_URL } from '../lib/site';
+import { isoDate } from '../lib/dates';
 
 // Generated at build time from the data files — new projects/blogs are added automatically.
 export default function sitemap() {
@@ -27,7 +28,7 @@ export default function sitemap() {
 
   const blogRoutes = blogs.map((b) => ({
     url: `${SITE_URL}/blog/${b.slug}`,
-    lastModified: b.dateModified || b.datePublished,
+    lastModified: isoDate(b.dateModified) || isoDate(b.datePublished),
     changeFrequency: 'monthly',
     priority: 0.8,
   }));

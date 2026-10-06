@@ -2,6 +2,8 @@
 // Every page builds its <head> from here so canonicals/OG tags can never drift
 // back to the homepage (the root cause of the old "only 1 page indexed" issue).
 
+import { isoDate } from './dates';
+
 export const SITE_URL = 'https://100devprojects.in';
 export const SITE_NAME = '100 Dev Projects';
 export const GA_ID = 'G-B4MHF65TG6';
@@ -114,8 +116,8 @@ export function blogSchemas(blog) {
     description: blog.excerpt,
     url,
     image: LOGO_URL,
-    datePublished: blog.datePublished,
-    dateModified: blog.dateModified || blog.datePublished,
+    datePublished: isoDate(blog.datePublished),
+    dateModified: isoDate(blog.dateModified) || isoDate(blog.datePublished),
     inLanguage: isHindi ? 'hi-IN' : 'en',
     author: { '@type': 'Person', name: blog.author, url: `${SITE_URL}/about` },
     publisher: {

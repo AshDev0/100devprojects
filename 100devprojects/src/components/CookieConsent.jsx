@@ -2,32 +2,32 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { getConsent, setConsent } from '../lib/consent';
 
 function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
     // Check if user has already accepted/rejected cookies
-    const cookieConsent = localStorage.getItem('cookieConsent');
-    if (!cookieConsent) {
+    if (!getConsent()) {
       // Show banner after a small delay for better UX
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setShowBanner(true);
       }, 1000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
+  // setConsent persists the choice and fires `cookie-consent-change`,
+  // which <GoogleAnalytics /> listens for to load GA without a reload.
   const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
+    setConsent('accepted');
     setShowBanner(false);
-    // Here you can initialize analytics or ads if needed
-    // Example: initializeGoogleAnalytics();
   };
 
   const handleReject = () => {
-    localStorage.setItem('cookieConsent', 'rejected');
+    setConsent('rejected');
     setShowBanner(false);
-    // Disable analytics/ads if user rejects
   };
 
   if (!showBanner) {

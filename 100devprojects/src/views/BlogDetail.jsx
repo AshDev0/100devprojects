@@ -3,7 +3,10 @@ import { getRelatedBlogs } from '../data/blogs/index';
 import { projects } from '../data/projects';
 import BlogCard from '../components/BlogCard';
 import MarkdownContent from '../components/MarkdownContent';
+import AffiliateDisclosure from '../components/AffiliateDisclosure';
+import RecommendedPlan from '../components/RecommendedPlan';
 import { SITE_URL } from '../lib/site';
+import { formatDate } from '../lib/dates';
 
 // Server Component: blog is resolved in app/blog/[slug]/page.jsx
 const BlogDetail = ({ blog }) => {
@@ -11,6 +14,8 @@ const BlogDetail = ({ blog }) => {
   const relatedProjects = blog.relatedProjects?.map(slug =>
     projects.find(p => p.slug === slug)
   ).filter(Boolean) || [];
+  const published = formatDate(blog.datePublished);
+  const updated = blog.dateModified !== blog.datePublished ? formatDate(blog.dateModified) : undefined;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -59,10 +64,18 @@ const BlogDetail = ({ blog }) => {
             </div>
 
             <div className="flex items-center gap-4 text-sm">
-              <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg">
-                <span>📅</span>
-                <span className="font-medium">{new Date(blog.datePublished).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
-              </div>
+              {published && (
+                <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg">
+                  <span>📅</span>
+                  <span className="font-medium">{published}</span>
+                </div>
+              )}
+              {updated && (
+                <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg">
+                  <span>🔄</span>
+                  <span className="font-medium">Updated: {updated}</span>
+                </div>
+              )}
               <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg">
                 <span>⏱️</span>
                 <span className="font-medium">{blog.readTime}</span>
@@ -83,10 +96,14 @@ const BlogDetail = ({ blog }) => {
           </div>
         </header>
 
+        {blog.affiliate && <AffiliateDisclosure />}
+
         {/* Article Content */}
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-12 border border-gray-100">
           <MarkdownContent content={blog.content} />
         </div>
+
+        {blog.affiliate && <RecommendedPlan {...blog.affiliate} />}
 
         {/* Share Section */}
         <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mb-12 border border-purple-200">
