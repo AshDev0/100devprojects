@@ -1,10 +1,10 @@
-import Script from 'next/script';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CookieConsent from '../components/CookieConsent';
 import BackToTop from '../components/BackToTop';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 import JsonLd from '../components/JsonLd';
-import { SITE_URL, SITE_NAME, GA_ID, DEFAULT_OG_IMAGE, organizationSchema, websiteSchema } from '../lib/site';
+import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, organizationSchema, websiteSchema } from '../lib/site';
 import './globals.css';
 
 // Site-wide defaults. Each page overrides title/description/canonical via its own metadata.
@@ -55,14 +55,8 @@ export default function RootLayout({ children }) {
           <BackToTop />
         </div>
 
-        {/* Google Analytics 4 — afterInteractive keeps it off the critical rendering path */}
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_ID}');`}
-        </Script>
+        {/* Google Analytics 4 — loaded only after cookie consent */}
+        <GoogleAnalytics />
       </body>
     </html>
   );

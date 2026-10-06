@@ -1,4 +1,5 @@
 import CopyButton from './CopyButton';
+import RecommendedPlan from './RecommendedPlan';
 
 const MarkdownContent = ({ content }) => {
   // Parse markdown content into structured elements
@@ -34,6 +35,19 @@ const MarkdownContent = ({ content }) => {
 
       if (currentCodeBlock !== null) {
         currentCodeBlock.push(line);
+        continue;
+      }
+
+      // Affiliate CTA: a line of exactly `:::cta <partner> <sub-id>`, e.g. `:::cta hostinger wp-setup`.
+      // Renders a compact <RecommendedPlan /> here; partners missing from data/affiliates.js render nothing.
+      const cta = line.trim().match(/^:::cta\s+([a-z0-9-]+)\s+([a-z0-9-]+)$/);
+      if (cta) {
+        if (currentList && currentList.length > 0) {
+          elements.push({ type: currentListType, items: currentList });
+          currentList = null;
+          currentListType = null;
+        }
+        elements.push({ type: 'cta', partner: cta[1], sub: cta[2] });
         continue;
       }
 
@@ -205,6 +219,9 @@ const MarkdownContent = ({ content }) => {
 
           case 'space':
             return <div key={index} className="h-2" />;
+
+          case 'cta':
+            return <RecommendedPlan key={index} partner={element.partner} sub={element.sub} compact />;
 
           default:
             return null;

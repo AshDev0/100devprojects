@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { formatDate } from '../lib/dates';
 
 const BlogCard = ({ blog }) => {
+  const published = formatDate(blog.datePublished);
+
   return (
     <article className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
       {/* Category Badge */}
@@ -27,10 +30,12 @@ const BlogCard = ({ blog }) => {
       <div className="p-6">
         {/* Meta Info */}
         <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-          <div className="flex items-center gap-1">
-            <span>📅</span>
-            <span>{new Date(blog.datePublished).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
-          </div>
+          {published && (
+            <div className="flex items-center gap-1">
+              <span>📅</span>
+              <span>{published}</span>
+            </div>
+          )}
           <div className="flex items-center gap-1">
             <span>⏱️</span>
             <span>{blog.readTime}</span>
